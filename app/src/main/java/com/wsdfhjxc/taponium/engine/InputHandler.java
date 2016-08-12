@@ -1,9 +1,7 @@
 package com.wsdfhjxc.taponium.engine;
 
 import android.view.*;
-import java.util.*;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.*;
 
 public class InputHandler extends TimedHandler implements ApplicationView.OnTouchListener {
     private final SceneKeeper sceneKeeper;

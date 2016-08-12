@@ -4,8 +4,7 @@ import android.content.*;
 import android.content.res.*;
 import android.graphics.*;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class ResourceKeeper {
     private final Resources resources;
