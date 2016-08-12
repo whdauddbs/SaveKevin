@@ -15,9 +15,9 @@ public class ApplicationView extends View {
     }
 
     private void clearCanvas(Canvas canvas) {
-        // clear the entire screen with a white color filling
+        // clear the entire screen with a black color filling
         paint.setStyle(Paint.Style.FILL);
-        paint.setColor(Color.WHITE);
+        paint.setColor(Color.BLACK);
         canvas.drawPaint(paint);
         canvas.drawRect(0, 0, getWidth(), getHeight(), paint);
     }
