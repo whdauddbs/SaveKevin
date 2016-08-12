@@ -49,6 +49,8 @@ public class EngineRunner implements Runnable {
             SystemClock.sleep(1); // prevent CPU from hogging and draining battery
         }
 
+        sceneKeeper.removeAllScenes();
+        resourceKeeper.unloadEverything();
         System.exit(0); // destroy app process at engine stop
     }
 
@@ -63,8 +65,6 @@ public class EngineRunner implements Runnable {
 
     public void stop() {
         running = false;
-        sceneKeeper.removeAllScenes();
-        resourceKeeper.unloadEverything();
     }
 
     public void pause() {
