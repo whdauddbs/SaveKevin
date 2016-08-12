@@ -22,14 +22,14 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onStop() {
-        super.onStop();
         engineRunner.pause();
+        super.onStop();
     }
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         engineRunner.stop();
+        super.onDestroy();
     }
 
     @Override
