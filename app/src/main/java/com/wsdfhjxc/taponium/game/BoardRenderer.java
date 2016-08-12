@@ -7,7 +7,7 @@ import com.wsdfhjxc.taponium.engine.*;
 public class BoardRenderer {
     private final Board board;
 
-    private Bitmap boardPanelImage;
+    private Bitmap boardPanelBitmap;
     private Rect boardPanelRect;
     private Flex boardPanelFlex;
 
@@ -16,8 +16,8 @@ public class BoardRenderer {
     private Flex boardSlotSpacerFlex;
 
     // screw sprite sheets, spare images are enough for this
-    private Bitmap hamsterImage, deadHamsterImage;
-    private Bitmap bunnyImage, deadBunnyImage;
+    private Bitmap hamsterBitmap, deadHamsterBitmap;
+    private Bitmap bunnyBitmap, deadBunnyBitmap;
 
     private Flex hamsterFlex;
     private Flex bunnyFlex;
@@ -40,17 +40,17 @@ public class BoardRenderer {
                                        new PointF(138f, 128f), true,
                                        new Point(), flexConfig);
 
-        boardPanelImage = resourceKeeper.getBitmap("board_panel");
-        boardPanelRect = new Rect(0, 0, boardPanelImage.getWidth(), boardPanelImage.getHeight());
+        boardPanelBitmap = resourceKeeper.getBitmap("board_panel");
+        boardPanelRect = new Rect(0, 0, boardPanelBitmap.getWidth(), boardPanelBitmap.getHeight());
         boardPanelFlex = new Flex(new PointF(0.5f, 1f), false,
-                                  new PointF(boardPanelImage.getWidth(), boardPanelImage.getHeight()), true,
-                                  new Point(-boardPanelImage.getWidth() / 2, -boardPanelImage.getHeight()),
+                                  new PointF(boardPanelBitmap.getWidth(), boardPanelBitmap.getHeight()), true,
+                                  new Point(-boardPanelBitmap.getWidth() / 2, -boardPanelBitmap.getHeight()),
                                   flexConfig);
 
-        hamsterImage = resourceKeeper.getBitmap("hamster");
-        bunnyImage = resourceKeeper.getBitmap("bunny");
-        deadHamsterImage = resourceKeeper.getBitmap("dead_hamster");
-        deadBunnyImage = resourceKeeper.getBitmap("dead_bunny");
+        hamsterBitmap = resourceKeeper.getBitmap("hamster");
+        bunnyBitmap = resourceKeeper.getBitmap("bunny");
+        deadHamsterBitmap = resourceKeeper.getBitmap("dead_hamster");
+        deadBunnyBitmap = resourceKeeper.getBitmap("dead_bunny");
 
         hamsterFlex = new Flex(new PointF(0f, 0f), true,
                             new PointF(182f, 207f), true,
@@ -62,7 +62,7 @@ public class BoardRenderer {
     }
 
     public void render(Canvas canvas, Paint paint, double alpha) {
-        canvas.drawBitmap(boardPanelImage, boardPanelRect, boardPanelFlex.getRect(), paint);
+        canvas.drawBitmap(boardPanelBitmap, boardPanelRect, boardPanelFlex.getRect(), paint);
 
         int beginX = boardAreaFlex.getPosition().x;
         int beginY = boardAreaFlex.getPosition().y;
@@ -80,24 +80,24 @@ public class BoardRenderer {
                     continue;
                 }
 
-                Bitmap image;
+                Bitmap bitmap;
                 Flex flex;
 
                 switch (slot.getContentType()) {
                     case HAMSTER: {
-                        image = hamsterImage;
+                        bitmap = hamsterBitmap;
                         flex = hamsterFlex;
                     } break;
                     case DEAD_HAMSTER: {
-                        image = deadHamsterImage;
+                        bitmap = deadHamsterBitmap;
                         flex = hamsterFlex;
                     } break;
                     case BUNNY: {
-                        image = bunnyImage;
+                        bitmap = bunnyBitmap;
                         flex = bunnyFlex;
                     } break;
                     case DEAD_BUNNY: {
-                        image = deadBunnyImage;
+                        bitmap = deadBunnyBitmap;
                         flex = bunnyFlex;
                     } break;
                     default: {
@@ -106,14 +106,14 @@ public class BoardRenderer {
                 }
 
                 double angled = Math.toRadians(slot.getInterpolatedDurationRatio(alpha) * 180.0);
-                int offsetR = (int) (Math.sin(angled) * image.getHeight());
+                int offsetR = (int) (Math.sin(angled) * bitmap.getHeight());
                 int offset = (int) (Math.sin(angled) * flex.getSize().y);
 
-                srcRect.set(0, 0, image.getWidth(), offsetR);
+                srcRect.set(0, 0, bitmap.getWidth(), offsetR);
                 dstRect.set(x, y - flex.getSize().y + (flex.getSize().y - offset),
                             x + flex.getSize().x, y);
 
-                canvas.drawBitmap(image, srcRect, dstRect, paint);
+                canvas.drawBitmap(bitmap, srcRect, dstRect, paint);
             }
         }
     }
