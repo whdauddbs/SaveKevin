@@ -37,7 +37,7 @@ public class BoardRenderer {
                                  new Point(), flexConfig);
 
         boardSlotSpacerFlex = new Flex(new PointF(0f, 0f), true,
-                                       new PointF(138f, 128f), true,
+                                       new PointF(135f, 125f), true,
                                        new Point(), flexConfig);
 
         boardPanelBitmap = resourceKeeper.getBitmap("board_panel");
