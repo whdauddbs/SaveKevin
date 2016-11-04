@@ -35,7 +35,6 @@ public class GameScene extends Scene {
         scoreCounterRenderer = new ScoreCounterRenderer(scoreCounter, resourceKeeper, flexConfig);
 
         board = new Board(scoreCounter);
-        boardRenderer = new BoardRenderer(board, resourceKeeper, flexConfig);
 
         boardAreaFlex = new Flex(new PointF(0.5f, 1f), false,
                                  new PointF(814f, 714f), true,
@@ -48,6 +47,9 @@ public class GameScene extends Scene {
         boardSlotSpacerFlex = new Flex(new PointF(0f, 0f), true,
                                        new PointF(135f, 125f), true,
                                        new Point(), flexConfig);
+
+        boardRenderer = new BoardRenderer(board, resourceKeeper, flexConfig,
+                                          boardAreaFlex, boardSlotFlex, boardSlotSpacerFlex);
 
         currentScoreTextBitmap = resourceKeeper.getBitmap("current_score_text");
         currentScoreTextRect = new Rect(0, 0, currentScoreTextBitmap.getWidth(),

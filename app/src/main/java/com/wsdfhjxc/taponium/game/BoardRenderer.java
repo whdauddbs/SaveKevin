@@ -25,20 +25,13 @@ public class BoardRenderer {
     private Rect srcRect = new Rect();
     private Rect dstRect = new Rect();
 
-    public BoardRenderer(Board board, ResourceKeeper resourceKeeper, FlexConfig flexConfig) {
+    public BoardRenderer(Board board, ResourceKeeper resourceKeeper, FlexConfig flexConfig,
+                         Flex boardAreaFlex, Flex boardSlotFlex, Flex boardSlotSpacerFlex) {
         this.board = board;
 
-        boardAreaFlex = new Flex(new PointF(0.5f, 1f), false,
-                                 new PointF(814f, 714f), true,
-                                 new Point(-814 / 2, -993), flexConfig);
-
-        boardSlotFlex = new Flex(new PointF(0f, 0f), true,
-                                 new PointF(183f, 156f), true,
-                                 new Point(), flexConfig);
-
-        boardSlotSpacerFlex = new Flex(new PointF(0f, 0f), true,
-                                       new PointF(135f, 125f), true,
-                                       new Point(), flexConfig);
+        this.boardAreaFlex = boardAreaFlex;
+        this.boardSlotFlex = boardSlotFlex;
+        this.boardSlotSpacerFlex = boardSlotSpacerFlex;
 
         boardPanelBitmap = resourceKeeper.getBitmap("board_panel");
         boardPanelRect = new Rect(0, 0, boardPanelBitmap.getWidth(), boardPanelBitmap.getHeight());
