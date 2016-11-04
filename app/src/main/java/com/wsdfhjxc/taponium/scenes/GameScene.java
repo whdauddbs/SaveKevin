@@ -46,7 +46,7 @@ public class GameScene extends Scene {
                                  new Point(), flexConfig);
 
         boardSlotSpacerFlex = new Flex(new PointF(0f, 0f), true,
-                                       new PointF(138f, 128f), true,
+                                       new PointF(135f, 125f), true,
                                        new Point(), flexConfig);
 
         currentScoreTextBitmap = resourceKeeper.getBitmap("current_score_text");
