@@ -1,5 +1,5 @@
 ## Taponium
-![Preview](http://i.imgur.com/LV7yGxq.png)
+![Preview](http://i.imgur.com/bPk3gx2.png)
 
 This is a stupid simple reflex-oriented arcade game for Android. It was written with usage of Android SDK for Android 2.3.3 and newer. It uses Canvas to draw things on the display and it was designed to be resolution independent. The game mechanics are simple. Player has to tap as many hamsters randomly appearing on a board as he can. For each tapped hamster he receives 10 points. For each missed hamster he loses 100 points. Additionally, tapping a bunny causes a loss of 1000 points. Difficulty gradually rises over time as everything gets surprisingly faster.
 
