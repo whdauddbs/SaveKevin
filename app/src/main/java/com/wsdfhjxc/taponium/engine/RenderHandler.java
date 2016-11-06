@@ -13,6 +13,6 @@ public class RenderHandler extends TimedHandler {
     @Override
     protected void handle() {
         double alpha = updateHandler.getAlpha();
-        applicationView.update(alpha);
+        applicationView.update();
     }
 }

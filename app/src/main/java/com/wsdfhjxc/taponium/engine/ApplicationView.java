@@ -6,12 +6,13 @@ import android.view.*;
 
 public class ApplicationView extends View {
     private final SceneKeeper sceneKeeper;
+    private final UpdateHandler updateHandler;
     private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    private double alpha = 0.0; // interpolation related factor
 
-    public ApplicationView(Context context, SceneKeeper sceneKeeper) {
+    public ApplicationView(Context context, SceneKeeper sceneKeeper, UpdateHandler updateHandler) {
         super(context);
         this.sceneKeeper = sceneKeeper;
+        this.updateHandler = updateHandler;
     }
 
     private void clearCanvas(Canvas canvas) {
@@ -29,14 +30,15 @@ public class ApplicationView extends View {
 
         // synchronized as this might be automatically called by OS from non-engine thread
         synchronized(sceneKeeper) {
+            // always get an updated alpha value for proper interpolation
+            double alpha = updateHandler.getAlpha();
             for (Scene scene : sceneKeeper.scenes) {
                 scene.handleRender(canvas, paint, alpha);
             }
         }
     }
 
-    public void update(double alpha) {
-        this.alpha = alpha;
+    public void update() {
         postInvalidate();
     }
 }

@@ -21,11 +21,12 @@ public class EngineRunner implements Runnable {
         sceneKeeper = new SceneKeeper();
         resourceKeeper = new ResourceKeeper(activity);
 
-        ApplicationView applicationView = new ApplicationView(activity, sceneKeeper);
+        updateHandler = new UpdateHandler(sceneKeeper, 15); // 15 updates per second
+
+        ApplicationView applicationView = new ApplicationView(activity, sceneKeeper, updateHandler);
         activity.setContentView(applicationView);
 
         inputHandler = new InputHandler(applicationView, sceneKeeper);
-        updateHandler = new UpdateHandler(sceneKeeper, 15); // 15 updates per second
         renderHandler = new RenderHandler(applicationView, updateHandler, 30); // 30 renders per second
 
         // flex config for resolution independence calculations
