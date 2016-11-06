@@ -27,7 +27,7 @@ public class EngineRunner implements Runnable {
         activity.setContentView(applicationView);
 
         inputHandler = new InputHandler(applicationView, sceneKeeper);
-        renderHandler = new RenderHandler(applicationView, updateHandler, 30); // 30 renders per second
+        renderHandler = new RenderHandler(applicationView, 30); // 30 renders per second
 
         // flex config for resolution independence calculations
         FlexConfig flexConfig = new FlexConfig(activity, 1080); // base resolution is 1080p width
