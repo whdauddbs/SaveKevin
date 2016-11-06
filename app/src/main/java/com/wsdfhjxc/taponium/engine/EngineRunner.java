@@ -47,7 +47,7 @@ public class EngineRunner implements Runnable {
                 renderHandler.poll();
             }
 
-            //SystemClock.sleep(1); // prevent CPU from hogging and draining battery
+            SystemClock.sleep(1); // prevent CPU from hogging and draining battery
         }
 
         sceneKeeper.removeAllScenes();
