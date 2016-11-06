@@ -14,8 +14,8 @@ public class Flex {
     private final Point realPosition;
     private final Point realSize;
 
-    public Flex(PointF position, boolean absolutePosition,
-                PointF size, boolean absoluteSize, Point positionOffset, FlexConfig flexConfig) {
+    public Flex(PointF position, boolean absolutePosition, PointF size, boolean absoluteSize,
+                Point positionOffset, FlexConfig flexConfig) {
         this.flexConfig = flexConfig;
         this.position = position;
         this.size = size;

@@ -7,6 +7,7 @@ import android.view.*;
 public class ApplicationView extends View {
     private final SceneKeeper sceneKeeper;
     private final UpdateHandler updateHandler;
+
     private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
     public ApplicationView(Context context, SceneKeeper sceneKeeper, UpdateHandler updateHandler) {

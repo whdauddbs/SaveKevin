@@ -12,8 +12,7 @@ public class ScoreCounterRenderer {
     private final int colorMaxScore = Color.argb(255, 255, 102, 0);
     private final int colorBelowMaxScore = Color.argb(255, 128, 128, 128);
 
-    public ScoreCounterRenderer(ScoreCounter scoreCounter, ResourceKeeper resourceKeeper,
-                                FlexConfig flexConfig) {
+    public ScoreCounterRenderer(ScoreCounter scoreCounter, ResourceKeeper resourceKeeper, FlexConfig flexConfig) {
         this.scoreCounter = scoreCounter;
         typeface = resourceKeeper.getTypeface("IndieFlower");
         scoreTextFlex = new Flex(new PointF(0.5f, 0.25f), false,

@@ -9,8 +9,7 @@ public abstract class Scene implements Comparable<Scene> {
     protected final FlexConfig flexConfig;
     protected int order = 0;
 
-    public Scene(SceneKeeper sceneKeeper, ResourceKeeper resourceKeeper,
-                 FlexConfig flexConfig, int order) {
+    public Scene(SceneKeeper sceneKeeper, ResourceKeeper resourceKeeper, FlexConfig flexConfig, int order) {
         this.sceneKeeper = sceneKeeper;
         this.resourceKeeper = resourceKeeper;
         this.flexConfig = flexConfig;

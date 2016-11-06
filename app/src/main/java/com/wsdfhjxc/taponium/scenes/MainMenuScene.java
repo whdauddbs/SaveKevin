@@ -17,8 +17,7 @@ public class MainMenuScene extends Scene {
     private Flex playButtonFlex;
     private Flex quitButtonFlex;
 
-    public MainMenuScene(SceneKeeper sceneKeeper, ResourceKeeper resourceKeeper,
-                         FlexConfig flexConfig) {
+    public MainMenuScene(SceneKeeper sceneKeeper, ResourceKeeper resourceKeeper, FlexConfig flexConfig) {
         super(sceneKeeper, resourceKeeper, flexConfig, 1);
     }
 

@@ -33,8 +33,7 @@ public class EngineRunner implements Runnable {
         FlexConfig flexConfig = new FlexConfig(activity, 1080); // base resolution is 1080p width
 
         // add initial default scene to processing list
-        sceneKeeper.addScene(new DefaultScene(sceneKeeper, resourceKeeper, renderHandler,
-                                              flexConfig));
+        sceneKeeper.addScene(new DefaultScene(sceneKeeper, resourceKeeper, renderHandler, flexConfig));
     }
 
     @Override
