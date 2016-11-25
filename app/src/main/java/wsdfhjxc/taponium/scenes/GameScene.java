@@ -80,30 +80,32 @@ public class GameScene extends Scene {
         sceneKeeper.addScene(new MainMenuScene(sceneKeeper, resourceKeeper, flexConfig));
     }
 
+    private void handleBoardAreaInput(MotionEvent motionEvent) {
+        int relativeX = (int)motionEvent.getX() - boardAreaFlex.getPosition().x;
+        int relativeY = (int)motionEvent.getY() - boardAreaFlex.getPosition().y;
+
+        int slotX = relativeX / (boardSlotFlex.getSize().x + boardSlotSpacerFlex.getSize().x);
+
+        int slotY = relativeY / (boardSlotFlex.getSize().y + boardSlotSpacerFlex.getSize().y);
+
+        Slot slot = board.getSlot(slotX, slotY);
+        if (slot.getContentType() == SlotContentType.HAMSTER) {
+            slot.setContentType(SlotContentType.DEAD_HAMSTER);
+            slot.scaleDuration(GameRules.TAPPED_CONTENT_DURATION_SCALING_FACTOR);
+            scoreCounter.add(GameRules.HAMSTER_CONTENT_TAPPED_POINTS);
+        } else if (slot.getContentType() == SlotContentType.BUNNY) {
+            slot.setContentType(SlotContentType.DEAD_BUNNY);
+            slot.scaleDuration(GameRules.TAPPED_CONTENT_DURATION_SCALING_FACTOR);
+            scoreCounter.add(GameRules.BUNNY_CONTENT_TAPPED_POINTS);
+        }
+    }
+
     @Override
     public void handleInput(MotionEvent motionEvent) {
         if (motionEvent.getAction() == 0) {
             if (boardAreaFlex.getRect().contains((int) motionEvent.getX(),
                                                  (int) motionEvent.getY())) {
-                int relativeX = (int)motionEvent.getX() - boardAreaFlex.getPosition().x;
-                int relativeY = (int)motionEvent.getY() - boardAreaFlex.getPosition().y;
-
-                int slotX = relativeX / (boardSlotFlex.getSize().x
-                                       + boardSlotSpacerFlex.getSize().x);
-
-                int slotY = relativeY / (boardSlotFlex.getSize().y
-                                       + boardSlotSpacerFlex.getSize().y);
-
-                Slot slot = board.getSlot(slotX, slotY);
-                if (slot.getContentType() == SlotContentType.HAMSTER) {
-                    slot.setContentType(SlotContentType.DEAD_HAMSTER);
-                    slot.scaleDuration(GameRules.TAPPED_CONTENT_DURATION_SCALING_FACTOR);
-                    scoreCounter.add(GameRules.HAMSTER_CONTENT_TAPPED_POINTS);
-                } else if (slot.getContentType() == SlotContentType.BUNNY) {
-                    slot.setContentType(SlotContentType.DEAD_BUNNY);
-                    slot.scaleDuration(GameRules.TAPPED_CONTENT_DURATION_SCALING_FACTOR);
-                    scoreCounter.add(GameRules.BUNNY_CONTENT_TAPPED_POINTS);
-                }
+                handleBoardAreaInput(motionEvent);
             } else if (backSignFlex.getRect().contains((int) motionEvent.getX(),
                                                        (int) motionEvent.getY())) {
                 sceneKeeper.removeScene(this);
