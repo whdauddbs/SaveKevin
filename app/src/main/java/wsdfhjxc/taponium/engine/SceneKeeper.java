@@ -53,7 +53,7 @@ public class SceneKeeper {
         scenesToUnload.clear();
     }
 
-    synchronized private boolean addScenes() {
+    private boolean addScenes() {
         boolean hasSomethingBeenAdded = !scenesToAdd.isEmpty();
 
         for (Scene scene : scenesToAdd) {
@@ -66,10 +66,9 @@ public class SceneKeeper {
         return hasSomethingBeenAdded;
     }
 
-    synchronized private void removeScenes() {
+    private void removeScenes() {
         for (Scene scene : scenesToRemove) {
             scenesToUnload.add(scene);
-
         }
 
         scenesToRemove.clear();
