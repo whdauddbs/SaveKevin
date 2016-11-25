@@ -35,7 +35,7 @@ public class SceneKeeper {
         }
     }
 
-    private void loadScenes() {
+    synchronized private void loadScenes() {
         for (Scene scene : scenesToLoad) {
             scene.load();
             scenes.add(scene);
@@ -44,7 +44,7 @@ public class SceneKeeper {
         scenesToLoad.clear();
     }
 
-    private void unloadScenes() {
+    synchronized private void unloadScenes() {
         for (Scene scene : scenesToUnload) {
             scenes.remove(scene);
             scene.unload();
