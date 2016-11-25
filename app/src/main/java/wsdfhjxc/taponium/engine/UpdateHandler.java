@@ -1,4 +1,4 @@
-package com.wsdfhjxc.taponium.engine;
+package wsdfhjxc.taponium.engine;
 
 public class UpdateHandler extends TimedHandler {
     private final SceneKeeper sceneKeeper;

@@ -1,4 +1,4 @@
-package com.wsdfhjxc.taponium.engine;
+package wsdfhjxc.taponium.engine;
 
 import android.content.*;
 import android.content.res.*;

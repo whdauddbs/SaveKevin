@@ -1,4 +1,4 @@
-package com.wsdfhjxc.taponium.engine;
+package wsdfhjxc.taponium.engine;
 
 public class RenderHandler extends TimedHandler {
     private final ApplicationView applicationView;

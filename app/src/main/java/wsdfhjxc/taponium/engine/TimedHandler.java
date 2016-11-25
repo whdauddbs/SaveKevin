@@ -1,4 +1,4 @@
-package com.wsdfhjxc.taponium.engine;
+package wsdfhjxc.taponium.engine;
 
 public abstract class TimedHandler {
     private final long interval;

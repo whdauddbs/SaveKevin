@@ -1,9 +1,9 @@
-package com.wsdfhjxc.taponium;
+package wsdfhjxc.taponium;
 
 import android.app.*;
 import android.os.*;
 
-import com.wsdfhjxc.taponium.engine.*;
+import wsdfhjxc.taponium.engine.*;
 
 public class MainActivity extends Activity {
     private EngineRunner engineRunner;

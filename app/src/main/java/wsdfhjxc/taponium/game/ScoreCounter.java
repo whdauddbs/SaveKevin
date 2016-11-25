@@ -1,4 +1,4 @@
-package com.wsdfhjxc.taponium.game;
+package wsdfhjxc.taponium.game;
 
 public class ScoreCounter {
     private long current = 0;

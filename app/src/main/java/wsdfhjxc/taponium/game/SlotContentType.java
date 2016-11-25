@@ -1,4 +1,4 @@
-package com.wsdfhjxc.taponium.game;
+package wsdfhjxc.taponium.game;
 
 // represents possible content types
 public enum SlotContentType {

@@ -1,9 +1,9 @@
-package com.wsdfhjxc.taponium.engine;
+package wsdfhjxc.taponium.engine;
 
 import android.app.*;
 import android.os.*;
 
-import com.wsdfhjxc.taponium.scenes.*;
+import wsdfhjxc.taponium.scenes.*;
 
 public class EngineRunner implements Runnable {
     private boolean running = false;

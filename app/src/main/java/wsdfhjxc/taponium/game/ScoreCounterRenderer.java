@@ -1,8 +1,8 @@
-package com.wsdfhjxc.taponium.game;
+package wsdfhjxc.taponium.game;
 
 import android.graphics.*;
 
-import com.wsdfhjxc.taponium.engine.*;
+import wsdfhjxc.taponium.engine.*;
 
 public class ScoreCounterRenderer {
     private final ScoreCounter scoreCounter;

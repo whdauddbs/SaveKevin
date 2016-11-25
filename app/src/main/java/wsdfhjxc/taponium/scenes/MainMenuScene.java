@@ -1,9 +1,9 @@
-package com.wsdfhjxc.taponium.scenes;
+package wsdfhjxc.taponium.scenes;
 
 import android.graphics.*;
 import android.view.*;
 
-import com.wsdfhjxc.taponium.engine.*;
+import wsdfhjxc.taponium.engine.*;
 
 public class MainMenuScene extends Scene {
     private Bitmap titleTextBitmap;

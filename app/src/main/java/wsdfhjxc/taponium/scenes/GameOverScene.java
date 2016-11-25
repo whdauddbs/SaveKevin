@@ -1,10 +1,10 @@
-package com.wsdfhjxc.taponium.scenes;
+package wsdfhjxc.taponium.scenes;
 
 import android.graphics.*;
 import android.view.*;
 
-import com.wsdfhjxc.taponium.engine.*;
-import com.wsdfhjxc.taponium.game.*;
+import wsdfhjxc.taponium.engine.*;
+import wsdfhjxc.taponium.game.*;
 
 public class GameOverScene extends Scene {
     private Bitmap gameOverTextBitmap;

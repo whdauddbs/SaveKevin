@@ -1,4 +1,4 @@
-package com.wsdfhjxc.taponium.game;
+package wsdfhjxc.taponium.game;
 
 public class GameRules {
     // how often does each content type occur, chances sum should be equal to 1.0
