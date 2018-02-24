@@ -71,11 +71,13 @@ public class DefaultScene extends Scene {
         canvas.drawBitmap(backgroundBitmap, backgroundBitmapRect,
                           backgroundBitmapFlex.getRect(), paint);
 
+        /*
         // draw an FPS counter in the top left corner
         paint.setColor(fpsCounterFontColor);
         paint.setTextSize(fpsCounterFontSize);
         paint.setTextAlign(Paint.Align.LEFT);
         paint.setTypeface(null); // disable any previously set custom font
         canvas.drawText("FPS: " + Math.round(renderHandler.getFPS()), 2, fpsCounterFontSize, paint);
+        */
     }
 }
