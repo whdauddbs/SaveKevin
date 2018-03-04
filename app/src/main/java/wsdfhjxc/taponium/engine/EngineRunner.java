@@ -9,6 +9,7 @@ public class EngineRunner implements Runnable {
     private boolean running = false;
     private boolean paused = false;
     private final Thread runnerThread = new Thread(this);
+    private final Activity activity;
 
     private final SceneKeeper sceneKeeper;
     private final ResourceKeeper resourceKeeper;
@@ -18,6 +19,8 @@ public class EngineRunner implements Runnable {
     private final RenderHandler renderHandler;
 
     public EngineRunner(Activity activity) {
+        this.activity = activity;
+
         sceneKeeper = new SceneKeeper();
         resourceKeeper = new ResourceKeeper(activity);
 
@@ -51,7 +54,8 @@ public class EngineRunner implements Runnable {
 
         sceneKeeper.removeAllScenes();
         resourceKeeper.unloadEverything();
-        System.exit(0); // destroy app process at engine stop
+
+        activity.finish();
     }
 
     public void start() {
