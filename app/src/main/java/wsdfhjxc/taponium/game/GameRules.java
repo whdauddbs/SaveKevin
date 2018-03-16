@@ -7,8 +7,8 @@ public class GameRules {
     public static final double EMPTY_CONTENT_OCCURRENCE_CHANCE = 0.5;
 
     // how long does each content type stay visible
-    public static final double HAMSTER_CONTENT_MIN_DURATION = 2.0;
-    public static final double HAMSTER_CONTENT_MAX_DURATION = 4.0;
+    public static final double HAMSTER_CONTENT_MIN_DURATION = 3.0;
+    public static final double HAMSTER_CONTENT_MAX_DURATION = 4.5;
 
     public static final double BUNNY_CONTENT_MIN_DURATION = 2.0;
     public static final double BUNNY_CONTENT_MAX_DURATION = 6.0;
