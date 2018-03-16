@@ -55,7 +55,7 @@ public class MainMenuScene extends Scene {
 
     @Override
     public void handleInput(MotionEvent motionEvent) {
-        if (motionEvent.getAction() == 0) {
+        if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
             if (playButtonFlex.getRect().contains((int) motionEvent.getX(),
                                                   (int) motionEvent.getY())) {
                 sceneKeeper.removeScene(this);

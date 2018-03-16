@@ -102,7 +102,7 @@ public class GameScene extends Scene {
 
     @Override
     public void handleInput(MotionEvent motionEvent) {
-        if (motionEvent.getAction() == 0) {
+        if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
             if (boardAreaFlex.getRect().contains((int) motionEvent.getX(),
                                                  (int) motionEvent.getY())) {
                 handleBoardAreaInput(motionEvent);
