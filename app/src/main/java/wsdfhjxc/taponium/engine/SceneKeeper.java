@@ -22,11 +22,15 @@ public class SceneKeeper {
     }
 
     public void addScene(Scene scene) {
-        scenesToAdd.add(scene);
+        if (!scenesToAdd.contains(scene) && !scenesToRemove.contains(scene)) {
+            scenesToAdd.add(scene);
+        }
     }
 
     public void removeScene(Scene scene) {
-        scenesToRemove.add(scene);
+        if (!scenesToRemove.contains(scene)) {
+            scenesToRemove.add(scene);
+        }
     }
 
     public void removeAllScenes() {
