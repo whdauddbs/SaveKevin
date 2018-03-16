@@ -27,7 +27,7 @@ public class GameOverScene extends Scene {
 
     public GameOverScene(SceneKeeper sceneKeeper, ResourceKeeper resourceKeeper,
                          FlexConfig flexConfig, long maxScore) {
-        super(sceneKeeper, resourceKeeper, flexConfig, 1);
+        super(sceneKeeper, resourceKeeper, flexConfig, 3, 1);
         this.maxScore = maxScore;
     }
 

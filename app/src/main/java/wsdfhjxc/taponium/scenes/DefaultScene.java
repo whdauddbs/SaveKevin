@@ -17,7 +17,7 @@ public class DefaultScene extends Scene {
 
     public DefaultScene(SceneKeeper sceneKeeper, ResourceKeeper resourceKeeper,
                         RenderHandler renderHandler, FlexConfig flexConfig) {
-        super(sceneKeeper, resourceKeeper, flexConfig, 0);
+        super(sceneKeeper, resourceKeeper, flexConfig, 0, 0);
         this.renderHandler = renderHandler;
     }
 

@@ -26,7 +26,7 @@ public class GameScene extends Scene {
     private Flex backSignFlex;
 
     public GameScene(SceneKeeper sceneKeeper, ResourceKeeper resourceKeeper, FlexConfig flexConfig) {
-        super(sceneKeeper, resourceKeeper, flexConfig, 1);
+        super(sceneKeeper, resourceKeeper, flexConfig, 2, 1);
     }
 
     @Override

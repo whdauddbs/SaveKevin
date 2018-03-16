@@ -18,7 +18,7 @@ public class MainMenuScene extends Scene {
     private Flex quitButtonFlex;
 
     public MainMenuScene(SceneKeeper sceneKeeper, ResourceKeeper resourceKeeper, FlexConfig flexConfig) {
-        super(sceneKeeper, resourceKeeper, flexConfig, 1);
+        super(sceneKeeper, resourceKeeper, flexConfig, 1, 1);
     }
 
     @Override
