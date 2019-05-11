@@ -3,9 +3,6 @@ This is a simple reflex-oriented arcade game for Android. It was written with us
 
 The game mechanics are very simple. You have to tap as many hamsters, randomly appearing on a board, as you can. For each tapped hamster you get 10 points. For each missed hamster you lose 100 points. Additionally, tapping a bunny causes a loss of 1000 points. Difficulty gradually rises over time, as everything gets surprisingly faster.
 
-<a href="https://f-droid.org/packages/wsdfhjxc.taponium/" target="_blank">
-<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="80"/></a>
-
 ### Screenshots
 ![](screenshot.png)
 
