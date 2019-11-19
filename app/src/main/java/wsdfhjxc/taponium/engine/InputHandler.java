@@ -3,10 +3,12 @@ package wsdfhjxc.taponium.engine;
 import android.view.*;
 import java.util.concurrent.*;
 
+//입력을 다루는 핸들러
 public class InputHandler extends TimedHandler implements ApplicationView.OnTouchListener {
     private final SceneKeeper sceneKeeper;
     private final BlockingQueue<MotionEvent> motionEvents;
 
+    //생성자
     public InputHandler(ApplicationView applicationView, SceneKeeper sceneKeeper) {
         super(1000, true); // 1000 input catches per second should be more than enough
         this.sceneKeeper = sceneKeeper;

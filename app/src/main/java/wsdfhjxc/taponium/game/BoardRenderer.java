@@ -4,7 +4,7 @@ import android.graphics.*;
 
 import wsdfhjxc.taponium.engine.*;
 
-public class BoardRenderer {
+public class BoardRenderer { // 비트맵 및 스마트폰 크기에 따라 보드판 이미지를 가져오는 클래스
     private final Board board;
 
     private Bitmap boardPanelBitmap;
@@ -16,6 +16,7 @@ public class BoardRenderer {
     private Flex boardSlotSpacerFlex;
 
     // screw sprite sheets, spare images are enough for this
+    //햄스터 및 토끼의 사진값 설정
     private Bitmap hamsterBitmap, deadHamsterBitmap;
     private Bitmap bunnyBitmap, deadBunnyBitmap;
 
@@ -28,7 +29,7 @@ public class BoardRenderer {
     public BoardRenderer(Board board, ResourceKeeper resourceKeeper, FlexConfig flexConfig,
                          Flex boardAreaFlex, Flex boardSlotFlex, Flex boardSlotSpacerFlex) {
         this.board = board;
-
+        //보드 크기 저장
         this.boardAreaFlex = boardAreaFlex;
         this.boardSlotFlex = boardSlotFlex;
         this.boardSlotSpacerFlex = boardSlotSpacerFlex;
@@ -45,10 +46,11 @@ public class BoardRenderer {
         deadHamsterBitmap = resourceKeeper.getBitmap("dead_hamster");
         deadBunnyBitmap = resourceKeeper.getBitmap("dead_bunny");
 
+        //햄스터의 크기 저장
         hamsterFlex = new Flex(new PointF(0f, 0f), true,
                             new PointF(182f, 207f), true,
                             new Point(), flexConfig);
-
+        //토끼의 크기 저장
         bunnyFlex = new Flex(new PointF(0f, 0f), true,
                              new PointF(182f, 302f), true,
                              new Point(), flexConfig);
@@ -57,6 +59,7 @@ public class BoardRenderer {
     public void render(Canvas canvas, Paint paint, double alpha) {
         canvas.drawBitmap(boardPanelBitmap, boardPanelRect, boardPanelFlex.getRect(), paint);
 
+        //x,y 좌표값에 따라 보드값 설정
         int beginX = boardAreaFlex.getPosition().x;
         int beginY = boardAreaFlex.getPosition().y;
         int stepX = boardSlotFlex.getSize().x + boardSlotSpacerFlex.getSize().x;
@@ -75,21 +78,21 @@ public class BoardRenderer {
 
                 Bitmap bitmap;
                 Flex flex;
-
+                //각 상황에 맞는 이미지를 가져옴
                 switch (slot.getContentType()) {
-                    case HAMSTER: {
+                    case HAMSTER: { //살아있는 햄스터의 경우
                         bitmap = hamsterBitmap;
                         flex = hamsterFlex;
                     } break;
-                    case DEAD_HAMSTER: {
+                    case DEAD_HAMSTER: { //죽은 햄스터의 경우
                         bitmap = deadHamsterBitmap;
                         flex = hamsterFlex;
                     } break;
-                    case BUNNY: {
+                    case BUNNY: { //살아있는 토끼의 경우
                         bitmap = bunnyBitmap;
                         flex = bunnyFlex;
                     } break;
-                    case DEAD_BUNNY: {
+                    case DEAD_BUNNY: { //죽은 토끼의 경우
                         bitmap = deadBunnyBitmap;
                         flex = bunnyFlex;
                     } break;
