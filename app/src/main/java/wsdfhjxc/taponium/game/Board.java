@@ -16,19 +16,19 @@ public class Board { //보드판의 값을 지정하는 클래스
         this.scoreCounter = scoreCounter;
         //햄스터를 포함하는 슬롯 생성
         hamsterContent = new SlotContent(SlotContentType.HAMSTER,
-                                         GameRules.HAMSTER_CONTENT_OCCURRENCE_CHANCE,
-                                         GameRules.HAMSTER_CONTENT_MIN_DURATION,
-                                         GameRules.HAMSTER_CONTENT_MAX_DURATION);
+                GameRules.HAMSTER_CONTENT_OCCURRENCE_CHANCE,
+                GameRules.HAMSTER_CONTENT_MIN_DURATION,
+                GameRules.HAMSTER_CONTENT_MAX_DURATION);
         //토끼를 포함하는 슬롯 생성
         bunnyContent = new SlotContent(SlotContentType.BUNNY,
-                                       GameRules.BUNNY_CONTENT_OCCURRENCE_CHANCE,
-                                       GameRules.BUNNY_CONTENT_MIN_DURATION,
-                                       GameRules.BUNNY_CONTENT_MAX_DURATION);
+                GameRules.BUNNY_CONTENT_OCCURRENCE_CHANCE,
+                GameRules.BUNNY_CONTENT_MIN_DURATION,
+                GameRules.BUNNY_CONTENT_MAX_DURATION);
         //빈 슬롯 생성
         emptyContent = new SlotContent(SlotContentType.EMPTY,
-                                       GameRules.EMPTY_CONTENT_OCCURRENCE_CHANCE,
-                                       GameRules.EMPTY_CONTENT_MIN_DURATION,
-                                       GameRules.EMPTY_CONTENT_MAX_DURATION);
+                GameRules.EMPTY_CONTENT_OCCURRENCE_CHANCE,
+                GameRules.EMPTY_CONTENT_MIN_DURATION,
+                GameRules.EMPTY_CONTENT_MAX_DURATION);
 
         slotContentDistributor = new SlotContentDistributor(hamsterContent, bunnyContent, emptyContent);
         //새로운 slotContentDistributor 생성, 새로운 값들을 매개변수로 전달

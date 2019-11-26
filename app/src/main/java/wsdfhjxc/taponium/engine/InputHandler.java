@@ -34,3 +34,4 @@ public class InputHandler extends TimedHandler implements ApplicationView.OnTouc
         return true;
     }
 }
+

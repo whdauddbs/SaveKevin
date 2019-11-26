@@ -37,9 +37,9 @@ public class BoardRenderer { // 비트맵 및 스마트폰 크기에 따라 보�
         boardPanelBitmap = resourceKeeper.getBitmap("board_panel");
         boardPanelRect = new Rect(0, 0, boardPanelBitmap.getWidth(), boardPanelBitmap.getHeight());
         boardPanelFlex = new Flex(new PointF(0.5f, 1f), false,
-                                  new PointF(boardPanelBitmap.getWidth(), boardPanelBitmap.getHeight()), true,
-                                  new Point(-boardPanelBitmap.getWidth() / 2, -boardPanelBitmap.getHeight()),
-                                  flexConfig);
+                new PointF(boardPanelBitmap.getWidth(), boardPanelBitmap.getHeight()), true,
+                new Point(-boardPanelBitmap.getWidth() / 2, -boardPanelBitmap.getHeight()),
+                flexConfig);
 
         hamsterBitmap = resourceKeeper.getBitmap("hamster");
         bunnyBitmap = resourceKeeper.getBitmap("bunny");
@@ -48,12 +48,12 @@ public class BoardRenderer { // 비트맵 및 스마트폰 크기에 따라 보�
 
         //햄스터의 크기 저장
         hamsterFlex = new Flex(new PointF(0f, 0f), true,
-                            new PointF(182f, 207f), true,
-                            new Point(), flexConfig);
+                new PointF(182f, 207f), true,
+                new Point(), flexConfig);
         //토끼의 크기 저장
         bunnyFlex = new Flex(new PointF(0f, 0f), true,
-                             new PointF(182f, 302f), true,
-                             new Point(), flexConfig);
+                new PointF(182f, 302f), true,
+                new Point(), flexConfig);
     }
 
     public void render(Canvas canvas, Paint paint, double alpha) {
@@ -107,7 +107,7 @@ public class BoardRenderer { // 비트맵 및 스마트폰 크기에 따라 보�
 
                 srcRect.set(0, 0, bitmap.getWidth(), offsetR);
                 dstRect.set(x, y - flex.getSize().y + (flex.getSize().y - offset),
-                            x + flex.getSize().x, y);
+                        x + flex.getSize().x, y);
 
                 canvas.drawBitmap(bitmap, srcRect, dstRect, paint);
             }

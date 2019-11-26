@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- 애플리케이션 안에 적재된 목록을 시작한다. -->
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
     package="wsdfhjxc.taponium">
+
+    <uses-permission android:name="android.permission.VIBRATE"/>
 
     <application
         android:allowBackup="true"

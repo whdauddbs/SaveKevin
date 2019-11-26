@@ -60,6 +60,7 @@ public abstract class Scene implements Comparable<Scene> {
         return (object instanceof Scene && ((Scene)object).getId() == id);
     }
 
+
     @Override
     public int hashCode() {
         return id;

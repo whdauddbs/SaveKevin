@@ -17,8 +17,8 @@ public class ScoreCounterRenderer { //기록된 점수를 가져오는 클래스
         this.scoreCounter = scoreCounter;
         typeface = resourceKeeper.getTypeface("IndieFlower");
         scoreTextFlex = new Flex(new PointF(0.5f, 0.25f), false,
-                                 new PointF(0f, 180f), true,
-                                 new Point(), flexConfig);
+                new PointF(0f, 180f), true,
+                new Point(), flexConfig);
     }
     //색깔 및 사이즈, 비율 등 점수판 설정
     public void render(Canvas canvas, Paint paint) {
@@ -28,6 +28,6 @@ public class ScoreCounterRenderer { //기록된 점수를 가져오는 클래스
         paint.setTextAlign(Paint.Align.CENTER);
         paint.setTypeface(typeface);
         canvas.drawText(String.valueOf(scoreCounter.getCurrent()),
-                        scoreTextFlex.getPosition().x, scoreTextFlex.getPosition().y, paint);
+                scoreTextFlex.getPosition().x, scoreTextFlex.getPosition().y, paint);
     }
 }

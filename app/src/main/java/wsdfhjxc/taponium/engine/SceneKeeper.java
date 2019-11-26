@@ -6,7 +6,7 @@ public class SceneKeeper {    // 씬을 저장하는 클래스
     //씬클래스 형태로 이루어진 arrayList들 선언
     public final List<Scene> scenes;
     private final List<Scene> scenesToLoad;
-    private final List<Scene> scenesToAdd;
+    private final List<Scene> scenesToAdd;      //추가할 씬들을 넣을 리스트
     private final List<Scene> scenesToRemove;
     private final List<Scene> scenesToUnload;
 
@@ -30,7 +30,7 @@ public class SceneKeeper {    // 씬을 저장하는 클래스
         if (!scenesToAdd.contains(scene) && !scenesToRemove.contains(scene)) {
             //contain() 메서드는 특정 객체가 리스트 안에 포함되었는지 확인할 때 사용
             //scenesToAdd,scenesToRemove 리스트 안에 씬객체가 없을때만 씬을 추가
-            scenesToAdd.add(scene);
+            scenesToAdd.add(scene); //add() 객체를 리스트에 추가 메서드
         }
     }
 
