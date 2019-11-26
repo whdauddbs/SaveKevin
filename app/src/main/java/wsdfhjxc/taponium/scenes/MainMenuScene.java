@@ -30,8 +30,7 @@ public class MainMenuScene extends Scene {
     private Flex playButtonFlex; // play 버튼 flex 객체
     private Flex quitButtonFlex; // 종료 버튼 flex 객체
 
-    private Flex musicButtonFlex;  //배경음악 버튼 객 flex객체  <- 수정된 부분
-    private Flex playhardButtonFlex;  //난이도 설정 버튼 객 flex객체  <- 수정된 부분
+    private boolean isClicked = false;
 
     MediaPlayer mediaPlayer;
     // 메인 메뉴 Scene 생성자
@@ -52,7 +51,7 @@ public class MainMenuScene extends Scene {
                 flexConfig);
                 */
         //
-
+/*
         titleTextBitmap = resourceKeeper.getBitmap("title_text"); // 타이틀 텍스트 이미지 로드
         // 타이틀 텍스트 이미지를 둘러싼 사각형을 너비와 높이만큼 설정
         titleTextRect = new Rect(0, 0, titleTextBitmap.getWidth(), titleTextBitmap.getHeight());
@@ -60,6 +59,7 @@ public class MainMenuScene extends Scene {
         titleTextFlex = new Flex(new PointF(0.5f, 0.1f), false,
                 new PointF(titleTextBitmap.getWidth(), titleTextBitmap.getHeight()), true,
                 new Point(-titleTextBitmap.getWidth() / 2, 0), flexConfig);
+ */
 
         menuPanelBitmap = resourceKeeper.getBitmap("menu_panel"); // 타이틀 패널 이미지 로드
         // 타이틀 패널 이미지를 둘러싼 사각형을 너비와 높이만큼 설정
@@ -98,15 +98,6 @@ public class MainMenuScene extends Scene {
         quitButtonFlex = new Flex(new PointF(0.5f, 1f), false, // quit 버튼 좌표 설정
                 new PointF(840f, 330f), true,
                 new Point(-840 / 2, -600), flexConfig);
-
-        // 배경음악 버튼
-        musicButtonFlex = new Flex(new PointF(0.1f, 1f), false, // music버튼 좌표 설정
-                new PointF(520f, 180f), true,
-                new Point(-840 / 2, -1800), flexConfig);
-        //난이도 설정 버튼
-        playhardButtonFlex= new Flex(new PointF(0.5f, 1f), false,
-                new PointF(840f, 330f), true,
-                new Point(-840 / 2, -1400), flexConfig);
     }
 
     @Override // unload함수(잠금해제) 오버라이딩
@@ -129,33 +120,31 @@ public class MainMenuScene extends Scene {
                 sceneKeeper.removeAllScenes(); // 게임이 종료되며 모든 Scene을 제거한다.
             }
             //스피커 버튼을 클릭했을때 함수
-            else if (musicButtonFlex.getRect().contains((int) motionEvent.getX(), // 종료 버튼의 범위에 마우스 커서가 들어있다면
-                    (int) motionEvent.getY())) {
+            else if (speakerFlex.getRect().contains((int) motionEvent.getX(), // 종료 버튼의 범위에 마우스 커서가 들어있다면
+                    (int) motionEvent.getY()) && isClicked == true) {
                 //musicSwitch가 true면 메인엑티비티 클래스의 미디어플레이어객체를 정지시키도록
                 if(MainActivity.musicSwitch==true){
                     MainActivity.mediaPlayer.pause();
                     MainActivity.musicSwitch = false;
-                    TimedHandler.levelCheck=false;
                 }else{//musicSwitch가 false면 메인엑티비티 클래스의 미디어플레이어객체를 다시 재생시키도록
                     MainActivity.mediaPlayer.start();
                     MainActivity.musicSwitch = true;
-                    TimedHandler.levelCheck=true;
                 }
+                isClicked = false;
             }
-            else if (playhardButtonFlex.getRect().contains((int) motionEvent.getX(),
-                    (int) motionEvent.getY())) {
+            else if (hardButtonFlex.getRect().contains((int) motionEvent.getX(),
+                    (int) motionEvent.getY()) && isClicked == true) {
                 if(TimedHandler.levelCheck==true){
                     TimedHandler.levelCheck=false;
-
                 }
                 else{
                     TimedHandler.levelCheck=true;
                 }
-
-
-
-
+                isClicked = false;
             }
+        }
+        else if(motionEvent.getAction() == MotionEvent.ACTION_DOWN){
+            isClicked = true;
         }
     }
 
@@ -164,7 +153,7 @@ public class MainMenuScene extends Scene {
 
     @Override // hendleRender함수(터치시 갱신한 화면 렌더링) 오버라이딩
     public void handleRender(Canvas canvas, Paint paint,double alpha){ // 핸들러 렌더링
-        canvas.drawBitmap(titleTextBitmap, titleTextRect, titleTextFlex.getRect(), paint); // 타이틀 텍스트 이미지를 그린다.
+        //canvas.drawBitmap(titleTextBitmap, titleTextRect, titleTextFlex.getRect(), paint); // 타이틀 텍스트 이미지를 그린다.
         canvas.drawBitmap(menuPanelBitmap, menuPanelRect, menuPanelFlex.getRect(), paint); // 메뉴 패널을 그린다.
         canvas.drawBitmap(speakerBitmap, speakerRect, speakerFlex.getRect(), paint); //스피커 이미지를 그린다.
         canvas.drawBitmap(hardButtonBitmap, hardButtonRect, hardButtonFlex.getRect(), paint); //스피커 이미지를 그린다.
