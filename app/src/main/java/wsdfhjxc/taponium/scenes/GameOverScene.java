@@ -7,10 +7,15 @@ import wsdfhjxc.taponium.engine.*;
 import wsdfhjxc.taponium.game.*;
 
 public class GameOverScene extends Scene {
+
+    private Bitmap titleTextBitmap; // 타이틀 텍스트 비트맵 객체
+    private Rect titleTextRect; // 타이틀 텍스트를 둘러싼 사각형 객체
+    private Flex titleTextFlex; // 타이틀 텍스트 flex 객체
+    /*
     private Bitmap gameOverTextBitmap; // GameOver 텍스트 비트맵 객체
     private Rect gameOverTextRect; // GameOver 텍스트 비트맵 사각형 객체
     private Flex gameOverTextFlex; // GameOver 텍스트 비트맵 flex 객체
-
+    */
     private Bitmap overPanelBitmap; // GameOver 패널 비트맵 객체
     private Rect overPanelRect; // GameOver 패널 비트맵 사각형 객체
     private Flex overPanelFlex; // GameOver 패널 비트맵 flex 객체
@@ -37,6 +42,14 @@ public class GameOverScene extends Scene {
 
     @Override // load함수 오버라이딩
     public void load() {
+        titleTextBitmap = resourceKeeper.getBitmap("title_text"); // 타이틀 텍스트 이미지 로드
+        // 타이틀 텍스트 이미지를 둘러싼 사각형을 너비와 높이만큼 설정
+        titleTextRect = new Rect(0, 0, titleTextBitmap.getWidth(), titleTextBitmap.getHeight());
+        // 타이틀 텍스트 이미지를 스마트폰 크기에 따라 비트맵의 실제 크기와 위치를 조정
+        titleTextFlex = new Flex(new PointF(0.5f, 0f), false,
+                new PointF(titleTextBitmap.getWidth(), titleTextBitmap.getHeight()), true,
+                new Point(-titleTextBitmap.getWidth() / 2, 0), flexConfig);
+
         overPanelBitmap = resourceKeeper.getBitmap("over_panel"); // GameOver 패널 이미지 로드
         // GameOver 패널 이미지를 둘러싼 사각형을 너비와 높이만큼 설정
         overPanelRect = new Rect(0, 0, overPanelBitmap.getWidth(), overPanelBitmap.getHeight());
@@ -45,7 +58,7 @@ public class GameOverScene extends Scene {
                 new PointF(overPanelBitmap.getWidth(), overPanelBitmap.getHeight()), true,
                 new Point(-overPanelBitmap.getWidth() / 2, -overPanelBitmap.getHeight()),
                 flexConfig);
-
+/*
         gameOverTextBitmap = resourceKeeper.getBitmap("game_over_text"); // GameOver 텍스트 이미지 로드
         // GameOver 텍스트 이미지를 둘러싼 사각형을 너비와 높이만큼 설정
         gameOverTextRect = new Rect(0, 0, gameOverTextBitmap.getWidth(),
@@ -57,6 +70,8 @@ public class GameOverScene extends Scene {
                 new Point(-gameOverTextBitmap.getWidth() / 2, -gameOverTextBitmap.getHeight() - 130),
                 flexConfig);
 
+ */
+
         ScoreCounter scoreCounter = new ScoreCounter(); // 점수 카운터 객체 생성
         scoreCounterRenderer = new ScoreCounterRenderer(scoreCounter, resourceKeeper, flexConfig); // 점수 카운터 렌더러 객체 생성
 
@@ -64,13 +79,13 @@ public class GameOverScene extends Scene {
 
         // 다시하기 버튼 이미지를 스마트폰 크기에 따라 비트맵의 실제 크기와 위치를 조정
         againButtonFlex = new Flex(new PointF(0.5f, 1f), false,
-                new PointF(840f, 330f), true,
-                new Point(-840 / 2, -1000), flexConfig);
+                new PointF(840f, 200f), true,
+                new Point(-840 / 2, -500), flexConfig);
 
         // 메인메뉴 버튼 이미지를 스마트폰 크기에 따라 비트맵의 실제 크기와 위치를 조정
         menuButtonFlex = new Flex(new PointF(0.5f, 1f), false,
-                new PointF(840f, 330f), true,
-                new Point(-840 / 2, -600), flexConfig);
+                new PointF(840f, 200f), true,
+                new Point(-840 / 2, -250), flexConfig);
     }
 
     @Override // unload함수(잠금해제) 오버라이딩
@@ -109,8 +124,9 @@ public class GameOverScene extends Scene {
 
     @Override // hendleRender함수(터치시 갱신한 화면 렌더링) 오버라이딩
     public void handleRender(Canvas canvas, Paint paint, double alpha) {
-        canvas.drawBitmap(gameOverTextBitmap, gameOverTextRect, gameOverTextFlex.getRect(), paint); // GameOver 텍스트 이미지를 그린다.
+        canvas.drawBitmap(titleTextBitmap, titleTextRect, titleTextFlex.getRect(), paint); // 타이틀 텍스트 이미지를 그린다.
+        //canvas.drawBitmap(gameOverTextBitmap, gameOverTextRect, gameOverTextFlex.getRect(), paint); // GameOver 텍스트 이미지를 그린다.
         canvas.drawBitmap(overPanelBitmap, overPanelRect, overPanelFlex.getRect(), paint); // GameOver 패널 이미지를 그린다.
-        scoreCounterRenderer.render(canvas, paint); // 점수 카운터를 그린다.
+        scoreCounterRenderer.render(canvas, paint, true); // 점수 카운터를 그린다.
     }
 }

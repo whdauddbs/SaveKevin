@@ -66,7 +66,7 @@ public class GameScene extends Scene {
         currentScoreTextRect = new Rect(0, 0, currentScoreTextBitmap.getWidth(),
                 currentScoreTextBitmap.getHeight());
 
-        currentScoreTextFlex = new Flex(new PointF(0.5f, 0.25f), false, // 현재 점수 텍스트 위치 객체 생성
+        currentScoreTextFlex = new Flex(new PointF(0.5f, 0.18f), false, // 현재 점수 텍스트 위치 객체 생성
                 new PointF(currentScoreTextBitmap.getWidth(),
                         currentScoreTextBitmap.getHeight()), true,
                 new Point(-currentScoreTextBitmap.getWidth() / 2,
@@ -187,7 +187,7 @@ public class GameScene extends Scene {
     @Override  // hendleRender함수(터치시 갱신한 화면 렌더링) 오버라이딩
     public void handleRender(Canvas canvas, Paint paint, double alpha) {
         boardRenderer.render(canvas, paint, alpha); // 게임 보드를 그린다.
-        scoreCounterRenderer.render(canvas, paint); // 스코어 카운터를 그린다.
+        scoreCounterRenderer.render(canvas, paint, false); // 스코어 카운터를 그린다.
 
         canvas.drawBitmap(currentScoreTextBitmap, currentScoreTextRect,
                 currentScoreTextFlex.getRect(), paint); // 현재 스코어 텍스트를 그린다.

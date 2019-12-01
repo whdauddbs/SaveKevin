@@ -32,8 +32,8 @@ public class DefaultScene extends Scene {
         resourceKeeper.loadBitmap("background"); // 배경
         resourceKeeper.loadBitmap("title_text"); // 타이틀 폰트
         resourceKeeper.loadBitmap("menu_panel"); // 메뉴 패널
-        resourceKeeper.loadBitmap("speaker"); // 스피커 패널
-        resourceKeeper.loadBitmap("button"); // 난이도 설정 패널
+        resourceKeeper.loadBitmap("speaker_on"); // 스피커 패널
+        resourceKeeper.loadBitmap("speaker_off"); // 스피커 패널
         resourceKeeper.loadBitmap("board_panel"); // 보드 패널
         resourceKeeper.loadBitmap("hamster"); // 햄스터 이미지
         resourceKeeper.loadBitmap("bunny"); // 토끼 이미지
@@ -41,12 +41,12 @@ public class DefaultScene extends Scene {
         resourceKeeper.loadBitmap("dead_bunny"); // 죽은 토끼 이미지
         resourceKeeper.loadBitmap("over_panel"); // 게임 over 패널 이미지
         resourceKeeper.loadBitmap("current_score_text"); // 현재 점수 폰트
-        resourceKeeper.loadBitmap("game_over_text"); // 게임 오버 폰트
+        //resourceKeeper.loadBitmap("game_over_text"); // 게임 오버 폰트
         resourceKeeper.loadBitmap("back_sign"); // 뒤로가기 버튼
         resourceKeeper.loadBitmap("pause1"); // 일시정지 버튼
         resourceKeeper.loadBitmap("introduction_panel"); // 게임소개 패널
         resourceKeeper.loadBitmap("difficulty_panel"); // 난이도 선택 패널
-        resourceKeeper.loadTypeface("IndieFlower", "ttf"); // 폰트는 indieFlower
+        resourceKeeper.loadTypeface("LongHair", "TTF"); // 폰트는 indieFlower
 
         // get background image
         // 배경 이미지 불러오기

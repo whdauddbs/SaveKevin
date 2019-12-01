@@ -35,25 +35,15 @@ public class MainMenuScene extends Scene {
     @Override
     public void load() {
 
-        //
-
         // 타이틀 패널 이미지를 스마트폰 크기에 따라 비트맵의 실제 크기와 위치를 조정
-        /*
-        menuPanelFlex = new Flex(new PointF(0.5f, 1f), false,
-                new PointF(menuPanelBitmap.getWidth(), menuPanelBitmap.getHeight()), true,
-                new Point(-menuPanelBitmap.getWidth() / 2, -menuPanelBitmap.getHeight()),
-                flexConfig);
-                */
-        //
-/*
+
         titleTextBitmap = resourceKeeper.getBitmap("title_text"); // 타이틀 텍스트 이미지 로드
         // 타이틀 텍스트 이미지를 둘러싼 사각형을 너비와 높이만큼 설정
         titleTextRect = new Rect(0, 0, titleTextBitmap.getWidth(), titleTextBitmap.getHeight());
         // 타이틀 텍스트 이미지를 스마트폰 크기에 따라 비트맵의 실제 크기와 위치를 조정
-        titleTextFlex = new Flex(new PointF(0.5f, 0.1f), false,
+        titleTextFlex = new Flex(new PointF(0.5f, 0f), false,
                 new PointF(titleTextBitmap.getWidth(), titleTextBitmap.getHeight()), true,
                 new Point(-titleTextBitmap.getWidth() / 2, 0), flexConfig);
- */
 
         menuPanelBitmap = resourceKeeper.getBitmap("menu_panel"); // 타이틀 패널 이미지 로드
         // 타이틀 패널 이미지를 둘러싼 사각형을 너비와 높이만큼 설정
@@ -64,11 +54,11 @@ public class MainMenuScene extends Scene {
                 new Point(-menuPanelBitmap.getWidth() / 2, -menuPanelBitmap.getHeight()),
                 flexConfig);
 
-        speakerBitmap = resourceKeeper.getBitmap("speaker"); // 타이틀 패널 이미지 로드
+        speakerBitmap = resourceKeeper.getBitmap("speaker_on"); // 타이틀 패널 이미지 로드
         // 스피커 이미지를 둘러싼 사각형을 너비와 높이만큼 설정
         speakerRect = new Rect(0, 0, speakerBitmap.getWidth(), speakerBitmap.getHeight());
         // 스피커 이미지를 스마트폰 크기에 따라 비트맵의 실제 크기와 위치를 조정
-        speakerFlex = new Flex(new PointF(0.1f, 0.1f), false,
+        speakerFlex = new Flex(new PointF(0.1f, 0.2f), false,
                 new PointF(speakerBitmap.getWidth(), speakerBitmap.getHeight()), true,
                 new Point(-speakerBitmap.getWidth() / 2, -speakerBitmap.getHeight()),
                 flexConfig);
@@ -117,9 +107,11 @@ public class MainMenuScene extends Scene {
                     (int) motionEvent.getY()) && isClicked == true) {
                 //musicSwitch가 true면 메인엑티비티 클래스의 미디어플레이어객체를 정지시키도록
                 if (MainActivity.musicSwitch == true) {
+                    speakerBitmap = resourceKeeper.getBitmap("speaker_off");
                     MainActivity.mediaPlayer.pause();
                     MainActivity.musicSwitch = false;
                 } else {//musicSwitch가 false면 메인엑티비티 클래스의 미디어플레이어객체를 다시 재생시키도록
+                    speakerBitmap = resourceKeeper.getBitmap("speaker_on");
                     MainActivity.mediaPlayer.start();
                     MainActivity.musicSwitch = true;
                 }
@@ -136,7 +128,7 @@ public class MainMenuScene extends Scene {
 
     @Override // hendleRender함수(터치시 갱신한 화면 렌더링) 오버라이딩
     public void handleRender(Canvas canvas, Paint paint,double alpha){ // 핸들러 렌더링
-        //canvas.drawBitmap(titleTextBitmap, titleTextRect, titleTextFlex.getRect(), paint); // 타이틀 텍스트 이미지를 그린다.
+        canvas.drawBitmap(titleTextBitmap, titleTextRect, titleTextFlex.getRect(), paint); // 타이틀 텍스트 이미지를 그린다.
         canvas.drawBitmap(menuPanelBitmap, menuPanelRect, menuPanelFlex.getRect(), paint); // 메뉴 패널을 그린다.
         canvas.drawBitmap(speakerBitmap, speakerRect, speakerFlex.getRect(), paint); //스피커 이미지를 그린다.
     }
