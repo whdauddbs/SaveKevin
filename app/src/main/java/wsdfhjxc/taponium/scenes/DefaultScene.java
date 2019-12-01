@@ -44,6 +44,8 @@ public class DefaultScene extends Scene {
         resourceKeeper.loadBitmap("game_over_text"); // 게임 오버 폰트
         resourceKeeper.loadBitmap("back_sign"); // 뒤로가기 버튼
         resourceKeeper.loadBitmap("pause1"); // 일시정지 버튼
+        resourceKeeper.loadBitmap("introduction_panel"); // 게임소개 패널
+        resourceKeeper.loadBitmap("difficulty_panel"); // 난이도 선택 패널
         resourceKeeper.loadTypeface("IndieFlower", "ttf"); // 폰트는 indieFlower
 
         // get background image
