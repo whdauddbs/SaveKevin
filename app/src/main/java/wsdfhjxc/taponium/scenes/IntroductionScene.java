@@ -58,7 +58,8 @@ public class IntroductionScene extends Scene {
 
     @Override // backPressed함수 오버라이딩
     public void backPressed() {
-        sceneKeeper.removeAllScenes(); // 뒤로가기 버튼이 눌리면 게임이 종료되며 모든 Scene을 제거한다.
+        sceneKeeper.removeScene(this); // 현재 Scene을 제거
+        sceneKeeper.addScene(new MainMenuScene(sceneKeeper, resourceKeeper, flexConfig)); // 게임 장면으로 돌아간다.
     }
 
     @Override // handleInput함수(터치 입력) 오버라이딩

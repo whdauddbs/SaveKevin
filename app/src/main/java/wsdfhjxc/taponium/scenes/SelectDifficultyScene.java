@@ -39,9 +39,9 @@ public class SelectDifficultyScene extends Scene {
         // 타이틀 텍스트 이미지를 둘러싼 사각형을 너비와 높이만큼 설정
         titleTextRect = new Rect(0, 0, titleTextBitmap.getWidth(), titleTextBitmap.getHeight());
         // 타이틀 텍스트 이미지를 스마트폰 크기에 따라 비트맵의 실제 크기와 위치를 조정
-        titleTextFlex = new Flex(new PointF(0.5f, 0f), false,
+        titleTextFlex = new Flex(new PointF(0.5f, 0.3f), false,
                 new PointF(titleTextBitmap.getWidth(), titleTextBitmap.getHeight()), true,
-                new Point(-titleTextBitmap.getWidth() / 2, 0), flexConfig);
+                new Point(-titleTextBitmap.getWidth() / 2, -titleTextBitmap.getHeight() * 2), flexConfig);
 
         difficultyPanelBitmap = resourceKeeper.getBitmap("difficulty_panel"); // 타이틀 패널 이미지 로드
         // 타이틀 패널 이미지를 둘러싼 사각형을 너비와 높이만큼 설정
@@ -53,12 +53,12 @@ public class SelectDifficultyScene extends Scene {
                 flexConfig);
 
         easyButtonFlex = new Flex(new PointF(0.5f, 1f), false, // play 버튼 좌표 설정
-                new PointF(840f, 200f), true,
-                new Point(-840 / 2, -1000), flexConfig);
+                new PointF(700f, 170f), true,
+                new Point(-700 / 2, -950), flexConfig);
 
         hardButtonFlex = new Flex(new PointF(0.5f, 1f), false, // quit 버튼 좌표 설정
-                new PointF(840f, 200f), true,
-                new Point(-840 / 2, -750), flexConfig);
+                new PointF(700f, 170f), true,
+                new Point(-700 / 2, -750), flexConfig);
 
     }
 

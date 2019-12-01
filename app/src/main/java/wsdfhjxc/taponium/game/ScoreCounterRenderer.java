@@ -35,9 +35,9 @@ public class ScoreCounterRenderer { //기록된 점수를 가져오는 클래스
                     scoreTextFlex.getPosition().x, scoreTextFlex.getPosition().y, paint);
         }
         else{
-            Flex textFlex = new Flex(new PointF(0.5f, 0.71f), false,
+            Flex textFlex = new Flex(new PointF(0.5f, 1f), false,
                     new PointF(0f, 140f), true,
-                    new Point(), flexConfig);
+                    new Point(0,-600), flexConfig);
             paint.setColor(colorGameOver);
             canvas.drawText(String.valueOf(scoreCounter.getCurrent()),
                     textFlex.getPosition().x, textFlex.getPosition().y, paint);

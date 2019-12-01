@@ -41,9 +41,9 @@ public class MainMenuScene extends Scene {
         // 타이틀 텍스트 이미지를 둘러싼 사각형을 너비와 높이만큼 설정
         titleTextRect = new Rect(0, 0, titleTextBitmap.getWidth(), titleTextBitmap.getHeight());
         // 타이틀 텍스트 이미지를 스마트폰 크기에 따라 비트맵의 실제 크기와 위치를 조정
-        titleTextFlex = new Flex(new PointF(0.5f, 0f), false,
+        titleTextFlex = new Flex(new PointF(0.5f, 0.3f), false,
                 new PointF(titleTextBitmap.getWidth(), titleTextBitmap.getHeight()), true,
-                new Point(-titleTextBitmap.getWidth() / 2, 0), flexConfig);
+                new Point(-titleTextBitmap.getWidth() / 2, -titleTextBitmap.getHeight() * 2), flexConfig);
 
         menuPanelBitmap = resourceKeeper.getBitmap("menu_panel"); // 타이틀 패널 이미지 로드
         // 타이틀 패널 이미지를 둘러싼 사각형을 너비와 높이만큼 설정
@@ -58,24 +58,24 @@ public class MainMenuScene extends Scene {
         // 스피커 이미지를 둘러싼 사각형을 너비와 높이만큼 설정
         speakerRect = new Rect(0, 0, speakerBitmap.getWidth(), speakerBitmap.getHeight());
         // 스피커 이미지를 스마트폰 크기에 따라 비트맵의 실제 크기와 위치를 조정
-        speakerFlex = new Flex(new PointF(0.1f, 0.2f), false,
+        speakerFlex = new Flex(new PointF(0.1f, 0.45f), false,
                 new PointF(speakerBitmap.getWidth(), speakerBitmap.getHeight()), true,
-                new Point(-speakerBitmap.getWidth() / 2, -speakerBitmap.getHeight()),
+                new Point(-speakerBitmap.getWidth() / 2, -speakerBitmap.getHeight()*4),
                 flexConfig);
 
 
         playButtonFlex = new Flex(new PointF(0.5f, 1f), false, // play 버튼 좌표 설정
-                new PointF(840f, 200f), true,
-                new Point(-840 / 2, -1000), flexConfig);
+                new PointF(700f, 170f), true,
+                new Point(-700 / 2, -950), flexConfig);
 
         introductionButtonFlex = new Flex(new PointF(0.5f, 1f), false, // quit 버튼 좌표 설정
-                new PointF(840f, 200f), true,
-                new Point(-840 / 2, -750), flexConfig);
+                new PointF(700f, 170f), true,
+                new Point(-700 / 2, -750), flexConfig);
 
         // 종료 버튼 이미지를 스마트폰 크기에 따라 비트맵의 실제 크기와 위치를 조정
         quitButtonFlex = new Flex(new PointF(0.5f, 1f), false, // quit 버튼 좌표 설정
-                new PointF(840f, 200f), true,
-                new Point(-840 / 2, -250), flexConfig);
+                new PointF(700f, 170f), true,
+                new Point(-700 / 2, -320), flexConfig);
 
     }
 

@@ -46,9 +46,9 @@ public class GameOverScene extends Scene {
         // 타이틀 텍스트 이미지를 둘러싼 사각형을 너비와 높이만큼 설정
         titleTextRect = new Rect(0, 0, titleTextBitmap.getWidth(), titleTextBitmap.getHeight());
         // 타이틀 텍스트 이미지를 스마트폰 크기에 따라 비트맵의 실제 크기와 위치를 조정
-        titleTextFlex = new Flex(new PointF(0.5f, 0f), false,
+        titleTextFlex = new Flex(new PointF(0.5f, 0.3f), false,
                 new PointF(titleTextBitmap.getWidth(), titleTextBitmap.getHeight()), true,
-                new Point(-titleTextBitmap.getWidth() / 2, 0), flexConfig);
+                new Point(-titleTextBitmap.getWidth() / 2, -titleTextBitmap.getHeight() * 2), flexConfig);
 
         overPanelBitmap = resourceKeeper.getBitmap("over_panel"); // GameOver 패널 이미지 로드
         // GameOver 패널 이미지를 둘러싼 사각형을 너비와 높이만큼 설정
@@ -79,13 +79,13 @@ public class GameOverScene extends Scene {
 
         // 다시하기 버튼 이미지를 스마트폰 크기에 따라 비트맵의 실제 크기와 위치를 조정
         againButtonFlex = new Flex(new PointF(0.5f, 1f), false,
-                new PointF(840f, 200f), true,
-                new Point(-840 / 2, -500), flexConfig);
+                new PointF(700f, 200f), true,
+                new Point(-700 / 2, -550), flexConfig);
 
         // 메인메뉴 버튼 이미지를 스마트폰 크기에 따라 비트맵의 실제 크기와 위치를 조정
         menuButtonFlex = new Flex(new PointF(0.5f, 1f), false,
-                new PointF(840f, 200f), true,
-                new Point(-840 / 2, -250), flexConfig);
+                new PointF(700f, 200f), true,
+                new Point(-700 / 2, -350), flexConfig);
     }
 
     @Override // unload함수(잠금해제) 오버라이딩
