@@ -1,9 +1,6 @@
 package wsdfhjxc.taponium.game;
 
-import android.util.Log;
-
 import java.util.*;
-
 
 public class HighScoreList {
 

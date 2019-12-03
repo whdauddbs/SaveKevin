@@ -87,7 +87,7 @@ public class GameScene extends Scene {
                 new Point(-backSignBitmap.getWidth() - 20, 20),
                 flexConfig);
 
-        pauseBitmap = resourceKeeper.getBitmap("pause1"); // 뒤로가기 버튼 객체 이미지 객체 생성
+        pauseBitmap = resourceKeeper.getBitmap("pause"); // 뒤로가기 버튼 객체 이미지 객체 생성
 
         // 뒤로가기 버튼 이미지를 둘러싼 사각형을 너비와 높이만큼 설정
         pauseRect = new Rect(0, 0, pauseBitmap.getWidth(), pauseBitmap.getHeight());

@@ -67,7 +67,7 @@ public class MainMenuScene extends Scene {
         // 스피커 이미지를 둘러싼 사각형을 너비와 높이만큼 설정
         speakerRect = new Rect(0, 0, speakerBitmap.getWidth(), speakerBitmap.getHeight());
         // 스피커 이미지를 스마트폰 크기에 따라 비트맵의 실제 크기와 위치를 조정
-        speakerFlex = new Flex(new PointF(0.1f, 0.45f), false,
+        speakerFlex = new Flex(new PointF(0.1f, 0.55f), false,
                 new PointF(speakerBitmap.getWidth(), speakerBitmap.getHeight()), true,
                 new Point(-speakerBitmap.getWidth() / 2, -speakerBitmap.getHeight()*4),
                 flexConfig);

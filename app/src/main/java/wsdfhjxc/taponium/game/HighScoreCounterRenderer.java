@@ -47,8 +47,8 @@ public class HighScoreCounterRenderer { //기록된 점수를 가져오는 클�
         Flex[][] textFlex = new Flex[4][3];
         for(int i = 0;i<4;i++){
             for(int j = 0;j<3; j++){
-                textFlex[i][j] = new Flex(new PointF(0.5f, 0.1f + 0.25f * i), false,
-                        new PointF(0f, 50f), true,
+                textFlex[i][j] = new Flex(new PointF(0.5f, 0.2f + 0.21f * i), false,
+                        new PointF(0f, 60f), true,
                         new Point(0, 60 * j), flexConfig);
             }
         }
@@ -60,7 +60,8 @@ public class HighScoreCounterRenderer { //기록된 점수를 가져오는 클�
 
         for(int i = 0;i<4;i++){
             for(int j = 0;j<3; j++){
-                canvas.drawText(String.valueOf(scoreList[i][3-j]),
+                String txt = (j+1) + "위 : " + scoreList[i][3-j];
+                canvas.drawText(txt,
                         textFlex[i][j].getPosition().x, textFlex[i][j].getPosition().y, paint);
             }
         }
