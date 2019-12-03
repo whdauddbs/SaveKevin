@@ -1,11 +1,19 @@
 package wsdfhjxc.taponium.scenes;
 
-import android.graphics.*;
-import android.view.*;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Point;
+import android.graphics.PointF;
+import android.graphics.Rect;
+import android.view.MotionEvent;
 
 import wsdfhjxc.taponium.MainActivity;
-import wsdfhjxc.taponium.engine.*;
-import android.media.MediaPlayer;
+import wsdfhjxc.taponium.engine.Flex;
+import wsdfhjxc.taponium.engine.FlexConfig;
+import wsdfhjxc.taponium.engine.ResourceKeeper;
+import wsdfhjxc.taponium.engine.Scene;
+import wsdfhjxc.taponium.engine.SceneKeeper;
 
 public class MainMenuScene extends Scene {
     private Bitmap titleTextBitmap; // 타이틀 텍스트 비트맵 객체
@@ -24,6 +32,7 @@ public class MainMenuScene extends Scene {
     private Flex playButtonFlex; // play 버튼 flex 객체
     private Flex quitButtonFlex; // 종료 버튼 flex 객체
     private Flex introductionButtonFlex;
+    private Flex highScoreButtonFlex; // 하이스코어 버튼 flex 객체
 
     private boolean isClicked = false;
 
@@ -72,6 +81,10 @@ public class MainMenuScene extends Scene {
                 new PointF(700f, 170f), true,
                 new Point(-700 / 2, -750), flexConfig);
 
+        highScoreButtonFlex = new Flex(new PointF(0.5f, 1f), false, // quit 버튼 좌표 설정
+                new PointF(700f, 170f), true,
+                new Point(-700 / 2, -540), flexConfig);
+
         // 종료 버튼 이미지를 스마트폰 크기에 따라 비트맵의 실제 크기와 위치를 조정
         quitButtonFlex = new Flex(new PointF(0.5f, 1f), false, // quit 버튼 좌표 설정
                 new PointF(700f, 170f), true,
@@ -98,6 +111,10 @@ public class MainMenuScene extends Scene {
                     (int) motionEvent.getY())) { // 시작 버튼의 범위에 마우스 커서가 들어있다면
                 sceneKeeper.removeScene(this); // 현재 Scene을 제거
                 sceneKeeper.addScene(new IntroductionScene(sceneKeeper, resourceKeeper, flexConfig)); // 소개 장면으로 돌아간다.
+            }  else if (highScoreButtonFlex.getRect().contains((int) motionEvent.getX(), // 하이스코어 버튼의 범위에 마우스 커서가 들어있다면
+                    (int) motionEvent.getY())) {
+                sceneKeeper.removeScene(this); // 게임이 종료되며 모든 Scene을 제거한다.
+                sceneKeeper.addScene(new HighScoreScene(sceneKeeper, resourceKeeper, flexConfig));
             } else if (quitButtonFlex.getRect().contains((int) motionEvent.getX(), // 종료 버튼의 범위에 마우스 커서가 들어있다면
                     (int) motionEvent.getY())) {
                 sceneKeeper.removeAllScenes(); // 게임이 종료되며 모든 Scene을 제거한다.

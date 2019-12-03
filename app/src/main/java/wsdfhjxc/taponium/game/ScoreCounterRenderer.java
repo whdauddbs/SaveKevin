@@ -14,6 +14,8 @@ public class ScoreCounterRenderer { //기록된 점수를 가져오는 클래스
     private final int colorBelowMaxScore = Color.argb(255, 127, 143, 127);
     private final int colorGameOver = Color.argb(255, 56, 104, 48);
 
+    public HighScoreList highScoreList;
+
     //기록된 점수를 가져오는 클래스
     public ScoreCounterRenderer(ScoreCounter scoreCounter, ResourceKeeper resourceKeeper, FlexConfig flexConfig) {
         this.scoreCounter = scoreCounter;
@@ -23,6 +25,7 @@ public class ScoreCounterRenderer { //기록된 점수를 가져오는 클래스
                 new Point(), flexConfig);
         this.flexConfig = flexConfig;
     }
+
     //색깔 및 사이즈, 비율 등 점수판 설정
     public void render(Canvas canvas, Paint paint, boolean isGameOver) {
         paint.setTextSize(scoreTextFlex.getSize().y);

@@ -13,6 +13,7 @@ public class ScoreCounter {
         return current;
     }
 
+    //최고 점수를 가지고 오는 함수
     public long getMax() {
         return max;
     }

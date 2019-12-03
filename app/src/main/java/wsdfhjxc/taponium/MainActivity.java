@@ -1,12 +1,14 @@
 package wsdfhjxc.taponium;
 
 import android.app.*;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;   //음악을 담을 미디어 임포트
 import android.os.*;
 
 import wsdfhjxc.taponium.engine.*;
 
 public class MainActivity extends Activity {
+
     private EngineRunner engineRunner;
 
     //미디어플레이어 객체 선언
@@ -25,9 +27,8 @@ public class MainActivity extends Activity {
             //음악 실행
             mediaPlayer.start();
         }
-
-
         engineRunner = new EngineRunner(this);
+
     }
 
     @Override

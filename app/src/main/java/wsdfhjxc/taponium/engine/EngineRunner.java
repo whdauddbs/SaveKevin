@@ -3,6 +3,7 @@ package wsdfhjxc.taponium.engine;
 import android.app.*;
 import android.os.*;
 
+import wsdfhjxc.taponium.game.HighScoreList;
 import wsdfhjxc.taponium.scenes.*;
 
 public class EngineRunner implements Runnable {
@@ -18,6 +19,8 @@ public class EngineRunner implements Runnable {
     private final InputHandler inputHandler; // 입력을 다루는 핸들러
     private final UpdateHandler updateHandler;  // 상태 변화를 다루는 핸들러
     private final RenderHandler renderHandler;  // 렌더링을 다루는 핸들러
+
+    public static HighScoreList highScoreList;
 
     //엔진러너 생성자
     public EngineRunner(Activity activity) {   // 생성자. 게임 화면을 띄울 액티비티를 받고, 게임 구동에 필요한 객체들을 생성한다.
@@ -39,6 +42,8 @@ public class EngineRunner implements Runnable {
 
         // add initial default scene to processing list
         sceneKeeper.addScene(new DefaultScene(sceneKeeper, resourceKeeper, renderHandler, flexConfig));
+
+        highScoreList = new HighScoreList();
     }
 
     @Override

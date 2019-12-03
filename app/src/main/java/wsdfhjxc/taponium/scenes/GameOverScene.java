@@ -8,6 +8,8 @@ import wsdfhjxc.taponium.game.*;
 
 public class GameOverScene extends Scene {
 
+
+
     private Bitmap titleTextBitmap; // 타이틀 텍스트 비트맵 객체
     private Rect titleTextRect; // 타이틀 텍스트를 둘러싼 사각형 객체
     private Flex titleTextFlex; // 타이틀 텍스트 flex 객체
@@ -38,6 +40,9 @@ public class GameOverScene extends Scene {
                          FlexConfig flexConfig, long maxScore) {
         super(sceneKeeper, resourceKeeper, flexConfig, 3, 1); // Scene 클래스 생성자
         this.maxScore = maxScore;
+        //하이스코어 리스트에 최고 점수를 추가해줌
+        EngineRunner.highScoreList.setScore(maxScore);
+        EngineRunner.highScoreList.addScore();
     }
 
     @Override // load함수 오버라이딩

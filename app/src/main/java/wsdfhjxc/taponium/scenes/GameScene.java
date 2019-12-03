@@ -38,35 +38,38 @@ public class GameScene extends Scene {
 
     @Override
     public void load() {
-        scoreCounter = new ScoreCounter(); // 스코어 카운터 객체 생성
+
+        // 스코어 카운터 객체 생성
+        scoreCounter = new ScoreCounter();
         // 스코어 카운터 렌더러 객체 생성
         scoreCounterRenderer = new ScoreCounterRenderer(scoreCounter, resourceKeeper, flexConfig);
 
+
         board = new Board(scoreCounter); // 보드에 스코어 카운터가 들어간 보드 객체 생성
-
-
-
-        boardAreaFlex = new Flex(new PointF(0.5f, 1f), false, // 보드 위치를 스마트폰 크기에 따라 비트맵의 실제 크기와 위치를 조정
+        // 보드 위치를 스마트폰 크기에 따라 비트맵의 실제 크기와 위치를 조정
+        boardAreaFlex = new Flex(new PointF(0.5f, 1f), false,
                 new PointF(814f, 714f), true,
                 new Point(-814 / 2, -993), flexConfig);
-
-        boardSlotFlex = new Flex(new PointF(0f, 0f), true, // // 보드 슬롯의 위치를 스마트폰 크기에 따라 비트맵의 실제 크기와 위치를 조정
+        // // 보드 슬롯의 위치를 스마트폰 크기에 따라 비트맵의 실제 크기와 위치를 조정
+        boardSlotFlex = new Flex(new PointF(0f, 0f), true,
                 new PointF(183f, 156f), true,
                 new Point(), flexConfig);
-
-        boardSlotSpacerFlex = new Flex(new PointF(0f, 0f), true, // // 보드 공간의 위치를 스마트폰 크기에 따라 비트맵의 실제 크기와 위치를 조정
+        // // 보드 공간의 위치를 스마트폰 크기에 따라 비트맵의 실제 크기와 위치를 조정
+        boardSlotSpacerFlex = new Flex(new PointF(0f, 0f), true,
                 new PointF(135f, 125f), true,
                 new Point(), flexConfig);
-
-        boardRenderer = new BoardRenderer(board, resourceKeeper, flexConfig, // 보드 렌더러 객체 생성
+        // 보드 렌더러 객체 생성
+        boardRenderer = new BoardRenderer(board, resourceKeeper, flexConfig,
                 boardAreaFlex, boardSlotFlex, boardSlotSpacerFlex);
 
-        currentScoreTextBitmap = resourceKeeper.getBitmap("current_score_text"); // 현재 스코어 이미지 로드
+
+        // 현재 스코어 이미지 로드
+        currentScoreTextBitmap = resourceKeeper.getBitmap("current_score_text");
         // 현재 스코어 이미지의 너비와 높이만큼의 둘러싼 사각형 설정
         currentScoreTextRect = new Rect(0, 0, currentScoreTextBitmap.getWidth(),
                 currentScoreTextBitmap.getHeight());
-
-        currentScoreTextFlex = new Flex(new PointF(0.5f, 0.18f), false, // 현재 점수 텍스트 위치 객체 생성
+        // 현재 점수 텍스트 위치 객체 생성
+        currentScoreTextFlex = new Flex(new PointF(0.5f, 0.18f), false,
                 new PointF(currentScoreTextBitmap.getWidth(),
                         currentScoreTextBitmap.getHeight()), true,
                 new Point(-currentScoreTextBitmap.getWidth() / 2,
@@ -119,6 +122,7 @@ public class GameScene extends Scene {
         if (slot.getContentType() == SlotContentType.HAMSTER) {
             slot.setContentType(SlotContentType.DEAD_HAMSTER);
             slot.scaleDuration(GameRules.TAPPED_CONTENT_DURATION_SCALING_FACTOR);
+            //스코어카운터 객체의 max스토어에 변화를줌
             scoreCounter.add(GameRules.HAMSTER_CONTENT_TAPPED_POINTS);
         }
         // 해당 슬롯을 클릭했을 때 토끼라면 죽은 토끼로 변경 후 점수 감소
@@ -177,6 +181,7 @@ public class GameScene extends Scene {
         }
         board.update(deltaTime); // 매초마다 보드를 갱신한다.
 
+        //gameover씬으로 이동하는 구간
         if (scoreCounter.isNegative()) { // 스코어 카운터가 0보다 작다면
             sceneKeeper.removeScene(this); // 현재 Scene을 제거하고
             sceneKeeper.addScene(new GameOverScene(sceneKeeper, resourceKeeper, flexConfig,
