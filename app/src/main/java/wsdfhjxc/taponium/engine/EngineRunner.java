@@ -1,8 +1,12 @@
 package wsdfhjxc.taponium.engine;
 
 import android.app.*;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.*;
+import android.util.Log;
 
+import wsdfhjxc.taponium.game.GameRules;
 import wsdfhjxc.taponium.game.HighScoreList;
 import wsdfhjxc.taponium.scenes.*;
 
@@ -20,7 +24,10 @@ public class EngineRunner implements Runnable {
     private final UpdateHandler updateHandler;  // 상태 변화를 다루는 핸들러
     private final RenderHandler renderHandler;  // 렌더링을 다루는 핸들러
 
+    public static SharedPreferences sharedPreferences;
     public static HighScoreList highScoreList;
+
+
 
     //엔진러너 생성자
     public EngineRunner(Activity activity) {   // 생성자. 게임 화면을 띄울 액티비티를 받고, 게임 구동에 필요한 객체들을 생성한다.
@@ -43,7 +50,7 @@ public class EngineRunner implements Runnable {
         // add initial default scene to processing list
         sceneKeeper.addScene(new DefaultScene(sceneKeeper, resourceKeeper, renderHandler, flexConfig));
 
-        highScoreList = new HighScoreList();
+        highScoreList = new HighScoreList(getHighScoreList());
     }
 
     @Override
@@ -91,5 +98,18 @@ public class EngineRunner implements Runnable {
         for (Scene scene : sceneKeeper.scenes) {
             scene.backPressed();
         }
+    }
+
+    public long[][] getHighScoreList(){
+        sharedPreferences = activity.getSharedPreferences("HighScore", Context.MODE_PRIVATE);
+        long[][] highScoreLists = new long[4][4];
+        for(int i = 0;i<4;i++){
+            for(int j = 0;j<3;j++) {
+                String key = GameRules.DIFFICULTY[i] + j;
+                highScoreLists[i][3-j] = sharedPreferences.getLong(key, 0);
+            }
+            highScoreLists[i][0] = 0;
+        }
+        return highScoreLists;
     }
 }

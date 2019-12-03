@@ -34,7 +34,6 @@ public class HighScoreScene extends Scene {
     // 게임 오버시 게임 오버 장면을 보여주지 못하고 넘어가는 것을 방지하기 위해 설정하는 변수들
     private double unlockTotalDuration = 0.5;
     private double unlockCurrentDuration = 0.0;
-    private  boolean isClicked = false;
     // GameOverScene 생성자 생성
 
     private HighScoreCounterRenderer highScoreCounterRenderer; // 점수 카운터 렌더러 객체
@@ -42,11 +41,8 @@ public class HighScoreScene extends Scene {
 
 
     //하이스코어 씬 생성자
-    public HighScoreScene(SceneKeeper sceneKeeper, ResourceKeeper resourceKeeper,
-                          FlexConfig flexConfig) {
-        super(sceneKeeper, resourceKeeper, flexConfig, 3, 1); // Scene 클래스 생성자
-
-
+    public HighScoreScene(SceneKeeper sceneKeeper, ResourceKeeper resourceKeeper, FlexConfig flexConfig) {
+        super(sceneKeeper, resourceKeeper, flexConfig, 6, 1); // Scene 클래스 생성자
     }
 
 
@@ -69,22 +65,10 @@ public class HighScoreScene extends Scene {
 
         //=============================================================================================================
         //점수를 담은 리스트 (5개)
-        long scoreList[] = EngineRunner.highScoreList.getStList();
-        long st1 = scoreList[0]; // <- 이런식으로 5개의 순위의 점수를 가져와 이걸로 점수 표현하면 될거같음.
-        long st2 = scoreList[1];
+        long scoreList[][] = EngineRunner.highScoreList.getStList();
         //=============================================================================================================
 
-
-      //  ScoreCounter scoreCounter = new ScoreCounter(); // 점수 카운터 객체 생성
-
-
-
         highScoreCounterRenderer = new HighScoreCounterRenderer(scoreList, resourceKeeper, flexConfig); // 점수 카운터 렌더러 객체 생성
-
-
-       // highScoreCounterRenderer = new HighScoreCounterRenderer(st1,st2, resourceKeeper, flexConfig);
-
-
 
     }
 
@@ -112,24 +96,11 @@ public class HighScoreScene extends Scene {
     @Override // handleInput함수(터치 입력) 오버라이딩
     public void handleInput(MotionEvent motionEvent) {
         Log.d("click", Integer.toString(motionEvent.getAction()));
-        if(motionEvent.getAction() == MotionEvent.ACTION_DOWN){
-            isClicked = true;
-        }
-
         if (motionEvent.getAction() == MotionEvent.ACTION_UP) { // 버튼 누른 손가락을 땟을 경우
-            if(UpdateHandler.isPause == false) {
-                if (backSignFlex.getRect().contains((int) motionEvent.getX(),
-                        (int) motionEvent.getY())) { // 뒤로가기 버튼(게임 내)의 범위에 마우스 커서가 들어있다면
-                    sceneKeeper.removeScene(this); // 현재 Scene을 제거하고
-                    sceneKeeper.addScene(new MainMenuScene(sceneKeeper, resourceKeeper, flexConfig)); // 메인 메뉴로 돌아간다.
-                }
-            }
-            else{
-                if (backSignFlex.getRect().contains((int) motionEvent.getX(),
-                        (int) motionEvent.getY())) { // 뒤로가기 버튼(게임 내)의 범위에 마우스 커서가 들어있다면
-                    sceneKeeper.removeScene(this); // 현재 Scene을 제거하고
-                    sceneKeeper.addScene(new MainMenuScene(sceneKeeper, resourceKeeper, flexConfig)); // 메인 메뉴로 돌아간다.
-                }
+            if (backSignFlex.getRect().contains((int) motionEvent.getX(),
+                    (int) motionEvent.getY())) { // 뒤로가기 버튼(게임 내)의 범위에 마우스 커서가 들어있다면
+                sceneKeeper.removeScene(this); // 현재 Scene을 제거하고
+                sceneKeeper.addScene(new MainMenuScene(sceneKeeper, resourceKeeper, flexConfig)); // 메인 메뉴로 돌아간다.
             }
         }
     }
@@ -149,7 +120,6 @@ public class HighScoreScene extends Scene {
 
     @Override // hendleRender함수(터치시 갱신한 화면 렌더링) 오버라이딩
     public void handleRender(Canvas canvas, Paint paint, double alpha) {
-       // scoreCounterRenderer.render(canvas, paint); // 점수 카운터를 그린다.
         canvas.drawBitmap(backSignBitmap, backSignRect, backSignFlex.getRect(), paint); // 뒤로가기 버튼(게임 내)을 그린다.
         highScoreCounterRenderer.render(canvas, paint); // 점수 카운터를 그린다.
     }

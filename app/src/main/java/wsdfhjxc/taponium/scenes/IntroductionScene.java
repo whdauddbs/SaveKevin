@@ -36,10 +36,9 @@ public class IntroductionScene extends Scene {
         // 타이틀 패널 이미지를 둘러싼 사각형을 너비와 높이만큼 설정
         IntroductionPanelRect = new Rect(0, 0, IntroductionPanelBitmap.getWidth(), IntroductionPanelBitmap.getHeight());
         // 타이틀 패널 이미지를 스마트폰 크기에 따라 비트맵의 실제 크기와 위치를 조정
-        IntroductionPanelFlex = new Flex(new PointF(1f, 0.29f), false,
-                new PointF(IntroductionPanelBitmap.getWidth(), IntroductionPanelBitmap.getHeight()), true,
-                new Point(-IntroductionPanelBitmap.getWidth(), -IntroductionPanelBitmap.getWidth()/2),
-                flexConfig);
+        IntroductionPanelFlex = new Flex(new PointF(0f, 0f), false,
+                new PointF(1, 1), false,
+                new Point(), flexConfig);
 
         backSignBitmap = resourceKeeper.getBitmap("back_sign"); // 뒤로가기 버튼 객체 이미지 객체 생성
 

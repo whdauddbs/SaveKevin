@@ -1,7 +1,6 @@
 package wsdfhjxc.taponium;
 
 import android.app.*;
-import android.content.SharedPreferences;
 import android.media.MediaPlayer;   //음악을 담을 미디어 임포트
 import android.os.*;
 
@@ -17,6 +16,7 @@ public class MainActivity extends Activity {
     //MainMenuScene에서 버튼을 클릭했을때 값을 변경해서 메인엑티비티의 음악을 끌지말지 결정
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +27,7 @@ public class MainActivity extends Activity {
             //음악 실행
             mediaPlayer.start();
         }
+
         engineRunner = new EngineRunner(this);
 
     }

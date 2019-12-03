@@ -27,4 +27,7 @@ public class GameRules { // 게임의 규칙에 사용되는 상수값을 지정
 
     // 죽은 토끼와 햄스터가 탭한 이후 얼마나 오래 화면에 남아있는지
     public static final double TAPPED_CONTENT_DURATION_SCALING_FACTOR = 0.2;
+
+    public static final String[] DIFFICULTY = {"easy", "normal", "hard", "timeAttack"};
+
 }

@@ -1,8 +1,13 @@
 package wsdfhjxc.taponium.scenes;
 
+import android.content.SharedPreferences;
 import android.graphics.*;
+import android.util.Log;
 import android.view.*;
 
+import java.sql.Time;
+
+import wsdfhjxc.taponium.MainActivity;
 import wsdfhjxc.taponium.engine.*;
 import wsdfhjxc.taponium.game.*;
 
@@ -35,14 +40,22 @@ public class GameOverScene extends Scene {
     private double unlockTotalDuration = 0.5;
     private double unlockCurrentDuration = 0.0;
 
+
     // GameOverScene 생성자 생성
     public GameOverScene(SceneKeeper sceneKeeper, ResourceKeeper resourceKeeper,
                          FlexConfig flexConfig, long maxScore) {
         super(sceneKeeper, resourceKeeper, flexConfig, 3, 1); // Scene 클래스 생성자
         this.maxScore = maxScore;
         //하이스코어 리스트에 최고 점수를 추가해줌
-        EngineRunner.highScoreList.setScore(maxScore);
-        EngineRunner.highScoreList.addScore();
+        int difficulty = TimedHandler.levelCheck-1;
+        SharedPreferences.Editor editor = EngineRunner.sharedPreferences.edit();
+        EngineRunner.highScoreList.addScore(difficulty, maxScore);
+        long[][] list = EngineRunner.highScoreList.getStList();
+        for(int i = 0; i<3;i++) {
+            String key = GameRules.DIFFICULTY[difficulty] + i;
+            editor.putLong(key, list[difficulty][3-i]);
+        }
+        editor.commit();
     }
 
     @Override // load함수 오버라이딩
