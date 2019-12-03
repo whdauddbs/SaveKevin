@@ -7,7 +7,8 @@ public abstract class TimedHandler {
     private long lastTime;
     private long delay, _delay; // _delay is used to store last delay value for the FPS counter
     private boolean highPriority;
-    public static boolean levelCheck=true;
+
+    public static int levelCheck=1;  //1이면 이지, 2이면 노말, 3이면 하드
 
     public TimedHandler(int frequency, boolean highPriority) {
         interval = delay = 1000 / frequency; /* 몇 ms마다 프레임 한장을 갱신해야 하는지를 저장하는 변수.

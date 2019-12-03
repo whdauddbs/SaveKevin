@@ -25,8 +25,9 @@ public class SelectDifficultyScene extends Scene {
     private Rect difficultyPanelRect; // 메뉴 패널을 둘러싼 사각형 객체
     private Flex difficultyPanelFlex; // 메뉴 패널 flex 객체
 
-    private Flex easyButtonFlex; // 쉬움 버튼 flex 객체
-    private Flex hardButtonFlex;
+    private Flex easyButtonFlex;      // 쉬움 버튼 flex 객체
+    private Flex normalButtonFlex;   //중간 버튼 flex 객체
+    private Flex hardButtonFlex;     //하드 버튼 flex 객체
 
     // 메인 메뉴 Scene 생성자
     public SelectDifficultyScene(SceneKeeper sceneKeeper, ResourceKeeper resourceKeeper, FlexConfig flexConfig) {
@@ -52,13 +53,17 @@ public class SelectDifficultyScene extends Scene {
                 new Point(-difficultyPanelBitmap.getWidth() / 2, -difficultyPanelBitmap.getHeight()),
                 flexConfig);
 
-        easyButtonFlex = new Flex(new PointF(0.5f, 1f), false, // play 버튼 좌표 설정
+        easyButtonFlex = new Flex(new PointF(0.5f, 1f), false, // 이지 버튼 좌표 설정
                 new PointF(700f, 170f), true,
                 new Point(-700 / 2, -950), flexConfig);
 
-        hardButtonFlex = new Flex(new PointF(0.5f, 1f), false, // quit 버튼 좌표 설정
+        normalButtonFlex = new Flex(new PointF(0.5f, 1f), false, // 노말 좌표 설정
                 new PointF(700f, 170f), true,
                 new Point(-700 / 2, -750), flexConfig);
+
+        hardButtonFlex = new Flex(new PointF(0.5f, 1f), false, // 하드 버튼 좌표 설정
+                new PointF(700f, 170f), true,
+                new Point(-700 / 2, -550), flexConfig);
 
     }
 
@@ -76,12 +81,17 @@ public class SelectDifficultyScene extends Scene {
         if (motionEvent.getAction() == MotionEvent.ACTION_UP) { // 버튼 누른 손가락을 땟을 경우
             if (easyButtonFlex.getRect().contains((int) motionEvent.getX(),
                     (int) motionEvent.getY())) { // 시작 버튼의 범위에 마우스 커서가 들어있다면
-                TimedHandler.levelCheck=true;
+                TimedHandler.levelCheck=1;
                 sceneKeeper.removeScene(this); // 현재 Scene을 제거
                 sceneKeeper.addScene(new GameScene(sceneKeeper, resourceKeeper, flexConfig)); // 게임 장면으로 돌아간다.
-            } else if (hardButtonFlex.getRect().contains((int) motionEvent.getX(),
+            } else if (normalButtonFlex.getRect().contains((int) motionEvent.getX(),
                     (int) motionEvent.getY())) { // 시작 버튼의 범위에 마우스 커서가 들어있다면
-                TimedHandler.levelCheck=false;
+                TimedHandler.levelCheck=2;
+                sceneKeeper.removeScene(this); // 현재 Scene을 제거
+                sceneKeeper.addScene(new GameScene(sceneKeeper, resourceKeeper, flexConfig)); // 소개 장면으로 돌아간다.
+            }else if (hardButtonFlex.getRect().contains((int) motionEvent.getX(),
+                    (int) motionEvent.getY())) { // 시작 버튼의 범위에 마우스 커서가 들어있다면
+                TimedHandler.levelCheck=3;
                 sceneKeeper.removeScene(this); // 현재 Scene을 제거
                 sceneKeeper.addScene(new GameScene(sceneKeeper, resourceKeeper, flexConfig)); // 소개 장면으로 돌아간다.
             }

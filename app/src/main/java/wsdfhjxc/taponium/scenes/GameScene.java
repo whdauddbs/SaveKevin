@@ -174,8 +174,10 @@ public class GameScene extends Scene {
     @Override
     public void handleUpdate(double deltaTime) { // handleUpdate함수(터치 입력) 오버라이딩
 
-        if(TimedHandler.levelCheck==true){
+        if(TimedHandler.levelCheck==1){
             deltaTime = deltaTime*1;
+        }else if(TimedHandler.levelCheck==2){
+            deltaTime = deltaTime*2;
         }else{
             deltaTime = deltaTime*3;
         }
