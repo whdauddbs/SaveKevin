@@ -28,6 +28,7 @@ public class SelectDifficultyScene extends Scene {
     private Flex easyButtonFlex;      // 쉬움 버튼 flex 객체
     private Flex normalButtonFlex;   //중간 버튼 flex 객체
     private Flex hardButtonFlex;     //하드 버튼 flex 객체
+    private Flex timeAttackButtonFlex;     //타임어택 버튼 flex 객체
 
     // 메인 메뉴 Scene 생성자
     public SelectDifficultyScene(SceneKeeper sceneKeeper, ResourceKeeper resourceKeeper, FlexConfig flexConfig) {
@@ -36,7 +37,6 @@ public class SelectDifficultyScene extends Scene {
 
     @Override
     public void load() {
-        // Todo : 타임어택 수정
         titleTextBitmap = resourceKeeper.getBitmap("title_text"); // 타이틀 텍스트 이미지 로드
         // 타이틀 텍스트 이미지를 둘러싼 사각형을 너비와 높이만큼 설정
         titleTextRect = new Rect(0, 0, titleTextBitmap.getWidth(), titleTextBitmap.getHeight());
@@ -64,7 +64,11 @@ public class SelectDifficultyScene extends Scene {
 
         hardButtonFlex = new Flex(new PointF(0.5f, 1f), false, // 하드 버튼 좌표 설정
                 new PointF(700f, 170f), true,
-                new Point(-700 / 2, -550), flexConfig);
+                new Point(-700 / 2, -540), flexConfig);
+
+        timeAttackButtonFlex = new Flex(new PointF(0.5f, 1f), false, // 하드 버튼 좌표 설정
+                new PointF(700f, 170f), true,
+                new Point(-700 / 2, -320), flexConfig);
 
     }
 
@@ -95,6 +99,12 @@ public class SelectDifficultyScene extends Scene {
                 TimedHandler.levelCheck=3;
                 sceneKeeper.removeScene(this); // 현재 Scene을 제거
                 sceneKeeper.addScene(new GameScene(sceneKeeper, resourceKeeper, flexConfig)); // 소개 장면으로 돌아간다.
+            }
+            else if (timeAttackButtonFlex.getRect().contains((int) motionEvent.getX(),
+                    (int) motionEvent.getY())) { // 시작 버튼의 범위에 마우스 커서가 들어있다면
+                TimedHandler.levelCheck=4;
+                sceneKeeper.removeScene(this); // 현재 Scene을 제거
+                sceneKeeper.addScene(new TimeAttackGameScene(sceneKeeper, resourceKeeper, flexConfig)); // 소개 장면으로 돌아간다.
             }
         }
     }

@@ -123,7 +123,10 @@ public class GameOverScene extends Scene {
                 if (againButtonFlex.getRect().contains((int) motionEvent.getX(),
                         (int) motionEvent.getY())) { // 다시하기 버튼의 범위에 마우스 커서가 들어있다면
                     sceneKeeper.removeScene(this); // 현재 Scene을 제거
-                    sceneKeeper.addScene(new GameScene(sceneKeeper, resourceKeeper, flexConfig)); // Game Scene으로 돌아간다.
+                    if(TimedHandler.levelCheck != 4)
+                        sceneKeeper.addScene(new GameScene(sceneKeeper, resourceKeeper, flexConfig)); // Game Scene으로 돌아간다.
+                    else
+                        sceneKeeper.addScene(new TimeAttackGameScene(sceneKeeper, resourceKeeper, flexConfig)); // Game Scene으로 돌아간다.
                 } else if (menuButtonFlex.getRect().contains((int) motionEvent.getX(),
                         (int) motionEvent.getY())) { // 메인메뉴 버튼의 범위에 마우스 커서가 들어있다면
                     sceneKeeper.removeScene(this); // 현재 Scene을 제거하고
