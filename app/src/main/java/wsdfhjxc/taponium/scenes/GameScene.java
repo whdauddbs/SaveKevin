@@ -147,13 +147,11 @@ public class GameScene extends Scene {
                     handleBoardAreaInput(motionEvent); // handleBoardAreaInput함수를 실행
                 } else if (backSignFlex.getRect().contains((int) motionEvent.getX(),
                         (int) motionEvent.getY())) { // 뒤로가기 버튼(게임 내)의 범위에 마우스 커서가 들어있다면
-                    UpdateHandler.isPause = false;
                     sceneKeeper.removeScene(this); // 현재 Scene을 제거하고
                     sceneKeeper.addScene(new MainMenuScene(sceneKeeper, resourceKeeper, flexConfig)); // 메인 메뉴로 돌아간다.
                 } else if (pauseFlex.getRect().contains((int) motionEvent.getX(), (int) motionEvent.getY()) && isClicked) {
                     UpdateHandler.isPause = true;
                     isClicked = false;
-                    Log.d("pause", "handleInput: " + UpdateHandler.isPause);
                 }
             }
             else{
@@ -164,6 +162,7 @@ public class GameScene extends Scene {
                 }
                 else if (backSignFlex.getRect().contains((int) motionEvent.getX(),
                         (int) motionEvent.getY())) { // 뒤로가기 버튼(게임 내)의 범위에 마우스 커서가 들어있다면
+                    UpdateHandler.isPause = false;
                     sceneKeeper.removeScene(this); // 현재 Scene을 제거하고
                     sceneKeeper.addScene(new MainMenuScene(sceneKeeper, resourceKeeper, flexConfig)); // 메인 메뉴로 돌아간다.
                 }

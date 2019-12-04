@@ -63,4 +63,10 @@ public class TimeCounter {
         pauseTimer();
         update();
     }
+
+    public  void decreaseTimer(){
+        current -= 10000;
+        pauseTimer();
+        update();
+    }
 }

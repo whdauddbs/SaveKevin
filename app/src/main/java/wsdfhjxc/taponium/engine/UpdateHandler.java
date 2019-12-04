@@ -1,5 +1,7 @@
 package wsdfhjxc.taponium.engine;
 
+import android.util.Log;
+
 import wsdfhjxc.taponium.MainActivity;
 
 public class UpdateHandler extends TimedHandler {
@@ -18,6 +20,7 @@ public class UpdateHandler extends TimedHandler {
     @Override
     public void handle() {
         for (Scene scene : sceneKeeper.scenes) {
+            Log.d("UpdateHandler", "handle: " + isPause);
             if(!isPause)
                 scene.handleUpdate(deltaTime);
             else
