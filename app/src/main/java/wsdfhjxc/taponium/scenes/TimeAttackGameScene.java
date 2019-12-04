@@ -146,6 +146,7 @@ public class TimeAttackGameScene extends Scene {
             slot.scaleDuration(GameRules.TAPPED_CONTENT_DURATION_SCALING_FACTOR);
             //스코어카운터 객체의 max스토어에 변화를줌
             scoreCounter.add(GameRules.HAMSTER_CONTENT_TAPPED_POINTS);
+            timeCounter.increaseTimer();
         }
         // 해당 슬롯을 클릭했을 때 토끼라면 죽은 토끼로 변경 후 점수 감소
         else if (slot.getContentType() == SlotContentType.BUNNY) {
@@ -197,7 +198,7 @@ public class TimeAttackGameScene extends Scene {
 
     @Override
     public void handleUpdate(double deltaTime) { // handleUpdate함수(터치 입력) 오버라이딩
-
+        deltaTime = deltaTime*2;
         board.update(deltaTime); // 매초마다 보드를 갱신한다.
 
         //gameover씬으로 이동하는 구간

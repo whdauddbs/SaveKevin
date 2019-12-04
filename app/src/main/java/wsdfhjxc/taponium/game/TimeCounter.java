@@ -57,4 +57,10 @@ public class TimeCounter {
         if(timer != null)
             timer.cancel();
     }
+
+    public  void increaseTimer(){
+        current += 1000;
+        pauseTimer();
+        update();
+    }
 }
