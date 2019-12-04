@@ -36,6 +36,7 @@ public class SelectDifficultyScene extends Scene {
 
     @Override
     public void load() {
+        // Todo : 타임어택 수정
         titleTextBitmap = resourceKeeper.getBitmap("title_text"); // 타이틀 텍스트 이미지 로드
         // 타이틀 텍스트 이미지를 둘러싼 사각형을 너비와 높이만큼 설정
         titleTextRect = new Rect(0, 0, titleTextBitmap.getWidth(), titleTextBitmap.getHeight());

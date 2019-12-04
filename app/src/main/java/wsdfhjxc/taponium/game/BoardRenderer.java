@@ -33,7 +33,6 @@ public class BoardRenderer { // 비트맵 및 스마트폰 크기에 따라 보�
         this.boardAreaFlex = boardAreaFlex;
         this.boardSlotFlex = boardSlotFlex;
         this.boardSlotSpacerFlex = boardSlotSpacerFlex;
-
         boardPanelBitmap = resourceKeeper.getBitmap("board_panel");
         boardPanelRect = new Rect(0, 0, boardPanelBitmap.getWidth(), boardPanelBitmap.getHeight());
         boardPanelFlex = new Flex(new PointF(0.5f, 1f), false,

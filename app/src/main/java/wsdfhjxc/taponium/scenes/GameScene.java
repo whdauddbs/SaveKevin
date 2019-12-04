@@ -73,7 +73,7 @@ public class GameScene extends Scene {
                 new PointF(currentScoreTextBitmap.getWidth(),
                         currentScoreTextBitmap.getHeight()), true,
                 new Point(-currentScoreTextBitmap.getWidth() / 2,
-                        -currentScoreTextBitmap.getHeight() - 136),
+                        -currentScoreTextBitmap.getHeight() - 50),
                 flexConfig);
 
         backSignBitmap = resourceKeeper.getBitmap("back_sign"); // 뒤로가기 버튼 객체 이미지 객체 생성
@@ -86,7 +86,6 @@ public class GameScene extends Scene {
                 new PointF(backSignBitmap.getWidth(), backSignBitmap.getHeight()), true,
                 new Point(-backSignBitmap.getWidth() - 20, 20),
                 flexConfig);
-
         pauseBitmap = resourceKeeper.getBitmap("pause"); // 뒤로가기 버튼 객체 이미지 객체 생성
 
         // 뒤로가기 버튼 이미지를 둘러싼 사각형을 너비와 높이만큼 설정
@@ -94,7 +93,7 @@ public class GameScene extends Scene {
 
         // 뒤로가기 버튼을 스마트폰 크기에 따라 비트맵의 실제 크기와 위치를 조정
         pauseFlex = new Flex(new PointF(0f, 0f), false,
-                new PointF(pauseBitmap.getWidth(), pauseBitmap.getHeight()), true,
+                new PointF(0.15f, 0.1f), false,
                 new Point(0, 0),
                 flexConfig);
     }
@@ -110,6 +109,7 @@ public class GameScene extends Scene {
     }
 
     private void handleBoardAreaInput(MotionEvent motionEvent) { // handleBoardAreaInput함수(보드 내 터치 입력)
+        //Todo : 누르는 위치에 따른 이미지 변경
         int relativeX = (int)motionEvent.getX() - boardAreaFlex.getPosition().x; // 보드내 입력된 상대적 위치 좌표 x
         int relativeY = (int)motionEvent.getY() - boardAreaFlex.getPosition().y; // 보드내 입력된 상대적 위치 좌표 y
 

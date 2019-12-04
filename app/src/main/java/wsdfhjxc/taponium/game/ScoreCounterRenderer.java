@@ -20,7 +20,7 @@ public class ScoreCounterRenderer { //기록된 점수를 가져오는 클래스
     public ScoreCounterRenderer(ScoreCounter scoreCounter, ResourceKeeper resourceKeeper, FlexConfig flexConfig) {
         this.scoreCounter = scoreCounter;
         typeface = resourceKeeper.getTypeface("LongHair");
-        scoreTextFlex = new Flex(new PointF(0.5f, 0.15f), false,
+        scoreTextFlex = new Flex(new PointF(0.5f, 0.2f), false,
                 new PointF(0f, 140f), true,
                 new Point(), flexConfig);
         this.flexConfig = flexConfig;
