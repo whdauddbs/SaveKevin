@@ -7,31 +7,50 @@ import android.util.Log;
 
 public class TimeCounter {
     public static long current; // 남은 시간
-    private CountDownTimer timer;
-    private boolean isOver;
-    private long delay = 30 * 1000; // 제한 시간 30초
+    public static long milliLeft; // 일시정지 시 남은 시간 저장
 
-    public TimeCounter()
-    {
+    private CountDownTimer timer;
+    private boolean isOver; // 게임이 종료됬는지 판별하는 변수
+
+    public TimeCounter() {
+        current = 60;
+        Log.i("Timer: ", "Start!");
         isOver = false;
     }
 
-    public long getCurrent(){ return current / 1000; } // 현재 시간 반환
+    public long getCurrent() {
+        return current;
+    } // 현재 시간 반환
 
     public boolean isNegative() { // 남은 시간이 0이하가 된 경우 게임 오버 장면으로 넘어갈 수 있도록 판별하기 위해 필요한 함수
         return isOver;
     }
 
-    public void update() {
+    public void pauseTimer(){ // 일시정지 기능 활성화 시 남은 시간 저장
+        Log.i("남은시간: ", " "+current);
+        Log.i("저장시간: ", " "+milliLeft);
+        timer.cancel();
+    }
+
+    public void resumeTimer(){
+        current = milliLeft/1000;
+        Log.i("남은시간: ", " "+current);
+        update();
+
+    }
+
+    public void update()
+    {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
-                timer = new CountDownTimer(delay, 100) { // 30초동안 1초 간격으로
+                timer = new CountDownTimer(current * 1000, 1000) { // 30초동안 1초 간격으로
 
                     @Override
                     public void onTick(long millisUntilFinished) {
-                        current = millisUntilFinished;
-                        Log.i("second: ", " " + millisUntilFinished);
+                        milliLeft = millisUntilFinished;
+                        current = millisUntilFinished/1000;
+                        Log.i("second: ", " "+millisUntilFinished/1000);
                     }
 
                     @Override
@@ -44,29 +63,16 @@ public class TimeCounter {
         });
     }
 
-    public void pauseTimer()
-    {
-        if(timer != null) {
-            delay = current;
-            timer.cancel();
-        }
-    }
-
     public void cancelTimer()
     {
+        Log.i("Timer: ", "End!");
         if(timer != null)
             timer.cancel();
     }
 
-    public  void increaseTimer(int time){
-        current += time * 1000;
-        pauseTimer();
-        update();
-    }
-
     public  void decreaseTimer(int time){
-        current -= time * 1000;
         pauseTimer();
-        update();
+        milliLeft += time * 1000;
+        resumeTimer();
     }
 }

@@ -25,8 +25,6 @@ public class GameRules { // 게임의 규칙에 사용되는 상수값을 지정
     public static final int HAMSTER_CONTENT_MISSED_POINTS = -100;
     public static final int BUNNY_CONTENT_TAPPED_POINTS = -1000;
 
-    // 게임 내의 스코어 계산 방식(햄스터 10, 햄스터 놓치면 -100, 토끼 -1000)
-    public static final int HAMSTER_CONTENT_TAPPED_TIME = 1;
     public static final int HAMSTER_CONTENT_MISSED_TIME = -5;
     public static final int BUNNY_CONTENT_TAPPED_TIME = -10;
 

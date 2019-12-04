@@ -20,7 +20,6 @@ public class UpdateHandler extends TimedHandler {
     @Override
     public void handle() {
         for (Scene scene : sceneKeeper.scenes) {
-            Log.d("UpdateHandler", "handle: " + isPause);
             if(!isPause)
                 scene.handleUpdate(deltaTime);
             else

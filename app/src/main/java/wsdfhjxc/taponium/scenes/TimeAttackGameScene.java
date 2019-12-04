@@ -65,7 +65,7 @@ public class TimeAttackGameScene extends Scene {
         scoreCounterRenderer = new ScoreCounterRenderer(scoreCounter, resourceKeeper, flexConfig);
 
 
-        board = new Board(scoreCounter); // 보드에 스코어 카운터가 들어간 보드 객체 생성
+        board = new Board(scoreCounter, timeCounter); // 보드에 스코어 카운터가 들어간 보드 객체 생성
         // 보드 위치를 스마트폰 크기에 따라 비트맵의 실제 크기와 위치를 조정
         boardAreaFlex = new Flex(new PointF(0.5f, 1f), false,
                 new PointF(814f, 714f), true,
@@ -147,7 +147,6 @@ public class TimeAttackGameScene extends Scene {
             slot.scaleDuration(GameRules.TAPPED_CONTENT_DURATION_SCALING_FACTOR);
             //스코어카운터 객체의 max스토어에 변화를줌
             scoreCounter.add(GameRules.HAMSTER_CONTENT_TAPPED_POINTS);
-            timeCounter.increaseTimer(GameRules.HAMSTER_CONTENT_TAPPED_TIME);
         }
         // 해당 슬롯을 클릭했을 때 토끼라면 죽은 토끼로 변경 후 점수 감소
         else if (slot.getContentType() == SlotContentType.BUNNY) {
@@ -159,7 +158,6 @@ public class TimeAttackGameScene extends Scene {
 
     @Override // handleInput함수(터치 입력) 오버라이딩
     public void handleInput(MotionEvent motionEvent) {
-        Log.d("click", Integer.toString(motionEvent.getAction()));
         if(motionEvent.getAction() == MotionEvent.ACTION_DOWN){
             isClicked = true;
         }
@@ -184,7 +182,7 @@ public class TimeAttackGameScene extends Scene {
                 if (pauseFlex.getRect().contains((int) motionEvent.getX(), (int) motionEvent.getY()) && isClicked) {
                     UpdateHandler.isPause = false;
                     isClicked = false;
-                    timeCounter.update();
+                    timeCounter.resumeTimer();
 
                 }
                 else if (backSignFlex.getRect().contains((int) motionEvent.getX(),

@@ -32,8 +32,6 @@ public class HighScoreCounterRenderer { //기록된 점수를 가져오는 클�
 
     //기록된 점수를 가져오는 클래스
     public HighScoreCounterRenderer(long scoreList[][], ResourceKeeper resourceKeeper, FlexConfig flexConfig) {
-
-        Log.d("HighScoreRenderer", "load: " + scoreList[0][3]);
         this.scoreList = scoreList;
         typeface = resourceKeeper.getTypeface("LongHair");
         scoreTextFlex = new Flex(new PointF(0.5f, 0.25f), false,

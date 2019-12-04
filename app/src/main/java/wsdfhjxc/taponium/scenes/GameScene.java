@@ -136,7 +136,6 @@ public class GameScene extends Scene {
 
     @Override // handleInput함수(터치 입력) 오버라이딩
     public void handleInput(MotionEvent motionEvent) {
-        Log.d("click", Integer.toString(motionEvent.getAction()));
         if(motionEvent.getAction() == MotionEvent.ACTION_DOWN){
             isClicked = true;
         }
@@ -159,7 +158,6 @@ public class GameScene extends Scene {
                 if (pauseFlex.getRect().contains((int) motionEvent.getX(), (int) motionEvent.getY()) && isClicked) {
                     UpdateHandler.isPause = false;
                     isClicked = false;
-                    Log.d("pause", "handleInput: " + UpdateHandler.isPause);
                 }
                 else if (backSignFlex.getRect().contains((int) motionEvent.getX(),
                         (int) motionEvent.getY())) { // 뒤로가기 버튼(게임 내)의 범위에 마우스 커서가 들어있다면
