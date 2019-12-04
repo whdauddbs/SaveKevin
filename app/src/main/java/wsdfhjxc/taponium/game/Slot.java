@@ -1,7 +1,10 @@
 package wsdfhjxc.taponium.game;
 
+import java.util.Random;
+
 public class Slot { // 게임에 사용되는 슬롯을 다루는 클래스
     private SlotContentType contentType; // 슬롯에 나타날 컨텐트의 타입을 저장하는 변수
+    private int randomContentValue;
     private double totalDuration = 0.0; // 컨텐트가 올라와 있을 지속시간을 저장하는 변수
     private double currentDuration = 0.0; // 슬롯에 있는 콘텐트의 현재 지속시간
     private double _currentDuration = 0.0; // 선형 보간법에 사용되는 이전의 값을 저장하는 변수
@@ -15,6 +18,7 @@ public class Slot { // 게임에 사용되는 슬롯을 다루는 클래스
     public void set(SlotContentType contentType, double totalDuration) {
         setContentType(contentType);
         setTotalDuration(totalDuration);
+        this.randomContentValue = new Random().nextInt(2);
         this.currentDuration = 0.0;
         this._currentDuration = 0.0;
     }// 선언한 클래스의 멤버 변수들을 초기화하는 메소드
@@ -67,4 +71,8 @@ public class Slot { // 게임에 사용되는 슬롯을 다루는 클래스
         double interpolatedDuration = (1.0 - alpha) * _currentDuration + alpha * currentDuration;
         return interpolatedDuration / totalDuration;
     } // 콘텐트의 움직임을 표현하기 위해 interpolatedDuration과 totalDuration의 비율을 반환 (보간법 이용)
+
+    public  int getRandomContentValue(){
+        return randomContentValue;
+    }
 }

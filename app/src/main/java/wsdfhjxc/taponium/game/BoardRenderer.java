@@ -17,7 +17,7 @@ public class BoardRenderer { // 비트맵 및 스마트폰 크기에 따라 보�
 
     // screw sprite sheets, spare images are enough for this
     //햄스터 및 토끼의 사진값 설정
-    private Bitmap hamsterBitmap, deadHamsterBitmap;
+    private Bitmap hamsterBitmap[] = new Bitmap[2], deadHamsterBitmap[][] = new Bitmap[2][4];
     private Bitmap bunnyBitmap, deadBunnyBitmap;
 
     private Flex hamsterFlex;
@@ -40,9 +40,13 @@ public class BoardRenderer { // 비트맵 및 스마트폰 크기에 따라 보�
                 new Point(-boardPanelBitmap.getWidth() / 2, -boardPanelBitmap.getHeight()),
                 flexConfig);
 
-        hamsterBitmap = resourceKeeper.getBitmap("hamster");
+        for(int i = 0;i<2;i++){
+            hamsterBitmap[i] = resourceKeeper.getBitmap("hamster" + i);
+            for(int j=0;j<4;j++){
+                deadHamsterBitmap[i][j] = resourceKeeper.getBitmap("dead_hamster"+i+"_"+j);
+            }
+        }
         bunnyBitmap = resourceKeeper.getBitmap("bunny");
-        deadHamsterBitmap = resourceKeeper.getBitmap("dead_hamster");
         deadBunnyBitmap = resourceKeeper.getBitmap("dead_bunny");
 
         //햄스터의 크기 저장
@@ -80,11 +84,11 @@ public class BoardRenderer { // 비트맵 및 스마트폰 크기에 따라 보�
                 //각 상황에 맞는 이미지를 가져옴
                 switch (slot.getContentType()) {
                     case HAMSTER: { //살아있는 햄스터의 경우
-                        bitmap = hamsterBitmap;
+                        bitmap = hamsterBitmap[slot.getRandomContentValue()];
                         flex = hamsterFlex;
                     } break;
                     case DEAD_HAMSTER: { //죽은 햄스터의 경우
-                        bitmap = deadHamsterBitmap;
+                        bitmap = deadHamsterBitmap[slot.getRandomContentValue()][0];
                         flex = hamsterFlex;
                     } break;
                     case BUNNY: { //살아있는 토끼의 경우

@@ -35,9 +35,13 @@ public class DefaultScene extends Scene {
         resourceKeeper.loadBitmap("speaker_on"); // 스피커 패널
         resourceKeeper.loadBitmap("speaker_off"); // 스피커 패널
         resourceKeeper.loadBitmap("board_panel"); // 보드 패널
-        resourceKeeper.loadBitmap("hamster"); // 햄스터 이미지
+        for(int i = 0;i<2;i++){
+            resourceKeeper.loadBitmap("hamster" + i);
+            for(int j=0;j<4;j++){
+                resourceKeeper.loadBitmap("dead_hamster"+i+"_"+j);
+            }
+        }
         resourceKeeper.loadBitmap("bunny"); // 토끼 이미지
-        resourceKeeper.loadBitmap("dead_hamster"); // 죽은 햄스터 이미지
         resourceKeeper.loadBitmap("dead_bunny"); // 죽은 토끼 이미지
         resourceKeeper.loadBitmap("over_panel"); // 게임 over 패널 이미지
         resourceKeeper.loadBitmap("current_score_text"); // 현재 점수 폰트
