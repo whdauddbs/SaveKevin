@@ -58,14 +58,14 @@ public class TimeCounter {
             timer.cancel();
     }
 
-    public  void increaseTimer(){
-        current += 1000;
+    public  void increaseTimer(int time){
+        current += time * 1000;
         pauseTimer();
         update();
     }
 
-    public  void decreaseTimer(){
-        current -= 10000;
+    public  void decreaseTimer(int time){
+        current -= time * 1000;
         pauseTimer();
         update();
     }

@@ -125,9 +125,10 @@ public class TimeAttackGameScene extends Scene {
     @Override // backPressed함수 오버라이딩
     // 뒤로가기 버튼이 눌리면 현재 Scene을 제거하고 메인메뉴 Scene 추가(뒤로가기 버튼이 눌리면 메인메뉴 장면으로 이동한다
     public void backPressed() {
+        UpdateHandler.isPause = false;
+        timeCounter.cancelTimer(); // 타이머 종료
         sceneKeeper.removeScene(this); // 현재 Scene 제거
         sceneKeeper.addScene(new MainMenuScene(sceneKeeper, resourceKeeper, flexConfig)); // 메인메뉴 Scene 추가
-        timeCounter.cancelTimer(); // 타이머 종료
     }
 
     private void handleBoardAreaInput(MotionEvent motionEvent) { // handleBoardAreaInput함수(보드 내 터치 입력)
@@ -146,13 +147,13 @@ public class TimeAttackGameScene extends Scene {
             slot.scaleDuration(GameRules.TAPPED_CONTENT_DURATION_SCALING_FACTOR);
             //스코어카운터 객체의 max스토어에 변화를줌
             scoreCounter.add(GameRules.HAMSTER_CONTENT_TAPPED_POINTS);
-            timeCounter.increaseTimer();
+            timeCounter.increaseTimer(GameRules.HAMSTER_CONTENT_TAPPED_TIME);
         }
         // 해당 슬롯을 클릭했을 때 토끼라면 죽은 토끼로 변경 후 점수 감소
         else if (slot.getContentType() == SlotContentType.BUNNY) {
             slot.setContentType(SlotContentType.DEAD_BUNNY);
             slot.scaleDuration(GameRules.TAPPED_CONTENT_DURATION_SCALING_FACTOR);
-            timeCounter.decreaseTimer();
+            timeCounter.decreaseTimer(GameRules.BUNNY_CONTENT_TAPPED_TIME);
         }
     }
 

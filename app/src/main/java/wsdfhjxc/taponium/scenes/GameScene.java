@@ -104,6 +104,7 @@ public class GameScene extends Scene {
     @Override // backPressed함수 오버라이딩
     // 뒤로가기 버튼이 눌리면 현재 Scene을 제거하고 메인메뉴 Scene 추가(뒤로가기 버튼이 눌리면 메인메뉴 장면으로 이동한다
     public void backPressed() {
+        UpdateHandler.isPause = false;
         sceneKeeper.removeScene(this); // 현재 Scene 제거
         sceneKeeper.addScene(new MainMenuScene(sceneKeeper, resourceKeeper, flexConfig)); // 메인메뉴 Scene 추가
     }

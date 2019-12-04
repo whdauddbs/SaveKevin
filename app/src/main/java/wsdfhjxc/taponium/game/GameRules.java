@@ -25,6 +25,11 @@ public class GameRules { // 게임의 규칙에 사용되는 상수값을 지정
     public static final int HAMSTER_CONTENT_MISSED_POINTS = -100;
     public static final int BUNNY_CONTENT_TAPPED_POINTS = -1000;
 
+    // 게임 내의 스코어 계산 방식(햄스터 10, 햄스터 놓치면 -100, 토끼 -1000)
+    public static final int HAMSTER_CONTENT_TAPPED_TIME = 1;
+    public static final int HAMSTER_CONTENT_MISSED_TIME = -5;
+    public static final int BUNNY_CONTENT_TAPPED_TIME = -10;
+
     // 죽은 토끼와 햄스터가 탭한 이후 얼마나 오래 화면에 남아있는지
     public static final double TAPPED_CONTENT_DURATION_SCALING_FACTOR = 0.2;
 

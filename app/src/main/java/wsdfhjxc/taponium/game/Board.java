@@ -1,5 +1,7 @@
 package wsdfhjxc.taponium.game;
 
+import wsdfhjxc.taponium.engine.TimedHandler;
+
 public class Board { //보드판의 값을 지정하는 클래스
     //크기 3X3 게임보드 생성
     private final int width = 3;
@@ -8,12 +10,14 @@ public class Board { //보드판의 값을 지정하는 클래스
     private final SlotContentDistributor slotContentDistributor; //GameRules에 설정된 비율로 콘텐트를 분배하는 클래스
 
     private final ScoreCounter scoreCounter;
+    private TimeCounter timeCounter;
 
     //콘텐트 변경 기간을 0.0으로 초기화
     private double currentChangeDuration = 0.0;
 
     public Board(ScoreCounter scoreCounter) {
         this.scoreCounter = scoreCounter;
+
         //햄스터를 포함하는 슬롯 생성
         hamsterContent = new SlotContent(SlotContentType.HAMSTER,
                 GameRules.HAMSTER_CONTENT_OCCURRENCE_CHANCE,
@@ -33,6 +37,11 @@ public class Board { //보드판의 값을 지정하는 클래스
         slotContentDistributor = new SlotContentDistributor(hamsterContent, bunnyContent, emptyContent);
         //새로운 slotContentDistributor 생성, 새로운 값들을 매개변수로 전달
         initializeSlots();
+    }
+
+    public Board(ScoreCounter scoreCounter, TimeCounter timeCounter) {
+        this(scoreCounter);
+        this.timeCounter = timeCounter;
     }
     //슬롯 초기화
     private void initializeSlots() {
@@ -100,7 +109,11 @@ public class Board { //보드판의 값을 지정하는 클래스
 
     public void slotTotalDurationPassed(Slot slot) {
         if (slot.getContentType() == SlotContentType.HAMSTER) {
-            scoreCounter.add(GameRules.HAMSTER_CONTENT_MISSED_POINTS);
+            if(TimedHandler.levelCheck != 4 && timeCounter == null)
+                scoreCounter.add(GameRules.HAMSTER_CONTENT_MISSED_POINTS);
+            else{
+                timeCounter.decreaseTimer(GameRules.HAMSTER_CONTENT_MISSED_TIME);
+            }
         }
     }
 }
