@@ -5,6 +5,7 @@ import java.util.Random;
 public class Slot { // 게임에 사용되는 슬롯을 다루는 클래스
     private SlotContentType contentType; // 슬롯에 나타날 컨텐트의 타입을 저장하는 변수
     private int randomContentValue;
+    private int stdX, stdY;
     private double totalDuration = 0.0; // 컨텐트가 올라와 있을 지속시간을 저장하는 변수
     private double currentDuration = 0.0; // 슬롯에 있는 콘텐트의 현재 지속시간
     private double _currentDuration = 0.0; // 선형 보간법에 사용되는 이전의 값을 저장하는 변수
@@ -74,5 +75,19 @@ public class Slot { // 게임에 사용되는 슬롯을 다루는 클래스
 
     public  int getRandomContentValue(){
         return randomContentValue;
+    }
+
+    public void setStdXY(int x, int y){
+        stdX = x;
+        stdY = y;
+    }
+
+    public int getStdXY(){
+        if(stdX == 0){
+            return stdY == 0 ? 0:3;
+        }
+        else{
+            return stdY == 0 ? 1:2;
+        }
     }
 }

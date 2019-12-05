@@ -88,7 +88,7 @@ public class BoardRenderer { // 비트맵 및 스마트폰 크기에 따라 보�
                         flex = hamsterFlex;
                     } break;
                     case DEAD_HAMSTER: { //죽은 햄스터의 경우
-                        bitmap = deadHamsterBitmap[slot.getRandomContentValue()][0];
+                        bitmap = deadHamsterBitmap[slot.getRandomContentValue()][slot.getStdXY()];
                         flex = hamsterFlex;
                     } break;
                     case BUNNY: { //살아있는 토끼의 경우

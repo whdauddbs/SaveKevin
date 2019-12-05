@@ -136,14 +136,14 @@ public class TimeAttackGameScene extends Scene {
         int relativeX = (int)motionEvent.getX() - boardAreaFlex.getPosition().x; // 보드내 입력된 상대적 위치 좌표 x
         int relativeY = (int)motionEvent.getY() - boardAreaFlex.getPosition().y; // 보드내 입력된 상대적 위치 좌표 y
 
-        int slotX = relativeX / (boardSlotFlex.getSize().x + boardSlotSpacerFlex.getSize().x); // 보드 슬롯내 입력된 위치 좌표 x
+        int slotX = relativeX / ((boardSlotFlex.getSize().x + boardSlotSpacerFlex.getSize().x)/2); // 보드 슬롯내 입력된 위치 좌표 x 0~5
 
-        int slotY = relativeY / (boardSlotFlex.getSize().y + boardSlotSpacerFlex.getSize().y); // 보드 슬롯내 입력된 위치 좌표 y
-
-        Slot slot = board.getSlot(slotX, slotY);
+        int slotY = relativeY / ((boardSlotFlex.getSize().y + boardSlotSpacerFlex.getSize().y)/2); // 보드 슬롯내 입력된 위치 좌표 y 0~5
+        Slot slot = board.getSlot(slotX/2, slotY/2);
         // 해당 슬롯을 클릭했을 때 햄스터라면 죽은 햄스터로 변경 후 점수가 증가
         if (slot.getContentType() == SlotContentType.HAMSTER) {
             slot.setContentType(SlotContentType.DEAD_HAMSTER);
+            slot.setStdXY(slotX % 2, slotY % 2);
             slot.scaleDuration(GameRules.TAPPED_CONTENT_DURATION_SCALING_FACTOR);
             //스코어카운터 객체의 max스토어에 변화를줌
             scoreCounter.add(GameRules.HAMSTER_CONTENT_TAPPED_POINTS);
