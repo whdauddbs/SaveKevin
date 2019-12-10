@@ -108,9 +108,9 @@ public class MainMenuScene extends Scene {
                 sceneKeeper.removeScene(this); // 현재 Scene을 제거
                 sceneKeeper.addScene(new SelectDifficultyScene(sceneKeeper, resourceKeeper, flexConfig)); // 게임 장면으로 돌아간다.
             } else if(introductionButtonFlex.getRect().contains((int) motionEvent.getX(),
-                    (int) motionEvent.getY())) { // 시작 버튼의 범위에 마우스 커서가 들어있다면
+                    (int) motionEvent.getY())) { // 게임 소개 버튼의 범위에 마우스 커서가 들어있다면
                 sceneKeeper.removeScene(this); // 현재 Scene을 제거
-                sceneKeeper.addScene(new IntroductionScene(sceneKeeper, resourceKeeper, flexConfig)); // 소개 장면으로 돌아간다.
+                sceneKeeper.addScene(new IntroductionScene(sceneKeeper, resourceKeeper, flexConfig)); // 소개 장면으로 들어간다.
             }  else if (highScoreButtonFlex.getRect().contains((int) motionEvent.getX(), // 하이스코어 버튼의 범위에 마우스 커서가 들어있다면
                     (int) motionEvent.getY())) {
                 sceneKeeper.removeScene(this); // 게임이 종료되며 모든 Scene을 제거한다.

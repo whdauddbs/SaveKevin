@@ -44,7 +44,7 @@ public class TimeCounter {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
-                timer = new CountDownTimer(current * 1000, 1000) { // 30초동안 1초 간격으로
+                timer = new CountDownTimer(current * 1000, 100) { // 30초동안 1초 간격으로
 
                     @Override
                     public void onTick(long millisUntilFinished) {

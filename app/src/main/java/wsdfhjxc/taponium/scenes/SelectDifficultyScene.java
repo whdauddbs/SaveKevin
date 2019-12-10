@@ -30,6 +30,9 @@ public class SelectDifficultyScene extends Scene {
     private Flex hardButtonFlex;     //하드 버튼 flex 객체
     private Flex timeAttackButtonFlex;     //타임어택 버튼 flex 객체
 
+    private double unlockTotalDuration = 0.5;
+    private double unlockCurrentDuration = 0.0;
+
     // 메인 메뉴 Scene 생성자
     public SelectDifficultyScene(SceneKeeper sceneKeeper, ResourceKeeper resourceKeeper, FlexConfig flexConfig) {
         super(sceneKeeper, resourceKeeper, flexConfig, 5, 1); // Scene 클래스 생성자
@@ -110,7 +113,11 @@ public class SelectDifficultyScene extends Scene {
     }
 
     @Override // handleUpdate함수(터치 입력) 오버라이딩
-    public void handleUpdate ( double deltaTime){} // 핸들러 갱신(딜레이만큼 기다렸다가)
+    public void handleUpdate ( double deltaTime){
+        if (unlockCurrentDuration < unlockTotalDuration) {
+            unlockCurrentDuration += deltaTime; // 현재 잠금이 해제된 기간에 전 프레임과 현재 프레임사이의 시간을 더해준다.
+        }
+    } // 핸들러 갱신(딜레이만큼 기다렸다가)
 
     @Override // hendleRender함수(터치시 갱신한 화면 렌더링) 오버라이딩
     public void handleRender(Canvas canvas, Paint paint,double alpha){ // 핸들러 렌더링
