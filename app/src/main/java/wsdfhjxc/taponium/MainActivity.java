@@ -49,6 +49,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onDestroy() {
         engineRunner.stop();
+        mediaPlayer.release();
         super.onDestroy();
     }
 
