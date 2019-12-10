@@ -22,6 +22,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         //raw폴더 밑에 intro.mp3 파일을 미디어 파일에 담음
         mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.intro2);
+        mediaPlayer.setLooping(true);
         musicSwitch = true;
         if(musicSwitch){
             //음악 실행
