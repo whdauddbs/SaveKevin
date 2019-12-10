@@ -86,28 +86,29 @@ public class SelectDifficultyScene extends Scene {
 
     @Override // handleInput함수(터치 입력) 오버라이딩
     public void handleInput(MotionEvent motionEvent) { // 해당 포인트가 눌린다면 발생
-        if (motionEvent.getAction() == MotionEvent.ACTION_UP) { // 버튼 누른 손가락을 땟을 경우
-            if (easyButtonFlex.getRect().contains((int) motionEvent.getX(),
-                    (int) motionEvent.getY())) { // 시작 버튼의 범위에 마우스 커서가 들어있다면
-                TimedHandler.levelCheck=1;
-                sceneKeeper.removeScene(this); // 현재 Scene을 제거
-                sceneKeeper.addScene(new GameScene(sceneKeeper, resourceKeeper, flexConfig)); // 게임 장면으로 돌아간다.
-            } else if (normalButtonFlex.getRect().contains((int) motionEvent.getX(),
-                    (int) motionEvent.getY())) { // 시작 버튼의 범위에 마우스 커서가 들어있다면
-                TimedHandler.levelCheck=2;
-                sceneKeeper.removeScene(this); // 현재 Scene을 제거
-                sceneKeeper.addScene(new GameScene(sceneKeeper, resourceKeeper, flexConfig)); // 소개 장면으로 돌아간다.
-            }else if (hardButtonFlex.getRect().contains((int) motionEvent.getX(),
-                    (int) motionEvent.getY())) { // 시작 버튼의 범위에 마우스 커서가 들어있다면
-                TimedHandler.levelCheck=3;
-                sceneKeeper.removeScene(this); // 현재 Scene을 제거
-                sceneKeeper.addScene(new GameScene(sceneKeeper, resourceKeeper, flexConfig)); // 소개 장면으로 돌아간다.
-            }
-            else if (timeAttackButtonFlex.getRect().contains((int) motionEvent.getX(),
-                    (int) motionEvent.getY())) { // 시작 버튼의 범위에 마우스 커서가 들어있다면
-                TimedHandler.levelCheck=4;
-                sceneKeeper.removeScene(this); // 현재 Scene을 제거
-                sceneKeeper.addScene(new TimeAttackGameScene(sceneKeeper, resourceKeeper, flexConfig)); // 소개 장면으로 돌아간다.
+        if (unlockCurrentDuration >= unlockTotalDuration) { // 잠금이 해제된 기간 >= 잠금이 해제된 총 기간인 경우
+            if (motionEvent.getAction() == MotionEvent.ACTION_UP) { // 버튼 누른 손가락을 땟을 경우
+                if (easyButtonFlex.getRect().contains((int) motionEvent.getX(),
+                        (int) motionEvent.getY())) { // 시작 버튼의 범위에 마우스 커서가 들어있다면
+                    TimedHandler.levelCheck = 1;
+                    sceneKeeper.removeScene(this); // 현재 Scene을 제거
+                    sceneKeeper.addScene(new GameScene(sceneKeeper, resourceKeeper, flexConfig)); // 게임 장면으로 돌아간다.
+                } else if (normalButtonFlex.getRect().contains((int) motionEvent.getX(),
+                        (int) motionEvent.getY())) { // 시작 버튼의 범위에 마우스 커서가 들어있다면
+                    TimedHandler.levelCheck = 2;
+                    sceneKeeper.removeScene(this); // 현재 Scene을 제거
+                    sceneKeeper.addScene(new GameScene(sceneKeeper, resourceKeeper, flexConfig)); // 소개 장면으로 돌아간다.
+                } else if (hardButtonFlex.getRect().contains((int) motionEvent.getX(),
+                        (int) motionEvent.getY())) { // 시작 버튼의 범위에 마우스 커서가 들어있다면
+                    TimedHandler.levelCheck = 3;
+                    sceneKeeper.removeScene(this); // 현재 Scene을 제거
+                    sceneKeeper.addScene(new GameScene(sceneKeeper, resourceKeeper, flexConfig)); // 소개 장면으로 돌아간다.
+                } else if (timeAttackButtonFlex.getRect().contains((int) motionEvent.getX(),
+                        (int) motionEvent.getY())) { // 시작 버튼의 범위에 마우스 커서가 들어있다면
+                    TimedHandler.levelCheck = 4;
+                    sceneKeeper.removeScene(this); // 현재 Scene을 제거
+                    sceneKeeper.addScene(new TimeAttackGameScene(sceneKeeper, resourceKeeper, flexConfig)); // 소개 장면으로 돌아간다.
+                }
             }
         }
     }
