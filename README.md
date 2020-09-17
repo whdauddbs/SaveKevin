@@ -21,5 +21,13 @@
 8. 도둑 이미지 추가 : 기존 한가지 이미지를 2가지로 추가
 9. 누르는 위치에 따라 이미지 변화
 
+### 팀 구성
+ - 김민준 : 배경음악 기능 구현, 리소스, 하이스코어, 난이도 등 구현 보조
+ - 송치헌 : 난이도 기능 구현
+ - 윤종명 : UML 분석, 일시정지, 누르는 위치에 따라 이미지 변화 기능 구현, 전체적인 기능 수정 및 디버그 담당
+ - 이윤주 : 리소스 제작 및 디자인 담당
+ - 이찬희 : 타임어택 기능 구현
+ - 황효진 : 하이스코어 기능 구현
+
 ### Credits
 Taponium uses Indie Flower font created by Kimberly Geswein and published under Open Font License.
